@@ -1,0 +1,11 @@
+.searchInput {
+  height: 1rpx;
+  padding: 5rpx;
+  background-color: var(--themeColor);
+}
+.searchInput navigator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}

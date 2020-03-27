@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var keepsHisWord;
+			keepsHisWord = false;
+			promise1 = new Promise(function(resolve, reject) {
+				if (keepsHisWord) {
+					resolve("小智承诺坚持分享好的东西给大家");
+				} else {
+					reject("我没有做到！");
+				}
+			});
+			console.log(promise1);
+		</script>
+	</body>
+</html>

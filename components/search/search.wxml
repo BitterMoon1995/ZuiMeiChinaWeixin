@@ -1,0 +1,6 @@
+<!--components/search/search.wxml-->
+<view class="searchInput">
+    <navigator url="/pages/search/search">
+        搜索活动、景区、线路
+    </navigator>
+</view>

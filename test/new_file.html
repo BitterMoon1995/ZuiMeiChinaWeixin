@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		    <ul id="list">
+		        <li>公司简介</li>
+		        <li>联系我们</li>
+		        <li>营销网络</li>
+		    </ul>
+		    <script>
+		       var list = document.getElementById("list");
+		       var li = list.children;
+			   for(var i = 0 ;i<li.length;i++){
+		        li[i].onclick=function(){
+		          alert(i);  // 结果总是3.而不是0，1，2
+		        }
+		       }
+		    </script> 
+	</body>
+</html>

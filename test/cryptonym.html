@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="点我啊！" id="sub">
+		<script>
+			(function(str) {
+				console.log("周神" + str);
+			})("牛逼!")
+
+			//获得按钮元素
+
+			var sub = document.querySelector("#sub");
+
+			//给按钮增加点击事件。
+
+			sub.onclick = function() {
+
+				alert("当点击按钮时会执行到我哦！");
+
+			}
+			//回调函数
+			// setInterval(function(){
+			
+			//     console.log("我其实是一个回调函数，每次1秒钟会被执行一次");
+			
+			// },1000)
+			
+			//JS没有块级作用域
+			if(1==1){
+			
+			    var a=12;//a为全局变量
+			
+			}
+			
+			console.log(a)//12
+			var a=8
+			console.log(a)
+			
+			//尝试块级作用域：
+			
+			function fn(){
+			
+			    (function(){
+			
+			        var la="啦啦啦！";
+			
+			    })();
+			
+			    console.log(la);//报错---la is not defined
+			
+			}
+			
+			fn();
+		</script>
+	</body>
+</html>
