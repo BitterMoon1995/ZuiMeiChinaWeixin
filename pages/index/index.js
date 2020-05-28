@@ -9,9 +9,11 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		swiperList: [],
+		sliderList: [],
 		catesList:[],
-		floorList:[]
+		sceneList:[],
+		routeList:[],
+		activityList:[]
 	},
 
 	/**
@@ -20,44 +22,67 @@ Page({
 	onLoad: function(options) {
 		/* 发送异步请求获取轮播图数据 */
 		// wx.request({
-		// 	url:'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+		// 	url:'https://api-hmugo-web.itheima.net/api/public/v1/home/sliderdata',
 		// 	success:(result)=>{
 		// 		this.setData({
-		// 			swiperList:result.data.message
+		// 			sliderList:result.data.message
 		// 		})
 		// 	}
 		// })
 		this.getSwiperList()
 		this.getCatesList()
-		this.getFloorList()
+		this.getSceneList()
+		this.getRouteList()
+		this.getActivityList()
 	},
 	getSwiperList() {
 		request({
-			url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata"
+			url: "http://localhost:2020/mini/slider/list"
 		})
 		.then(result => {
 			this.setData({
-				swiperList: result.data.message
+				sliderList: result
 			})
 		})
 	},
 	getCatesList() {
 		request({
-			url: "https://api-hmugo-web.itheima.net/api/public/v1/home/catitems"
+			url: "http://localhost:2020/mini/icon/getCategory"
 		})
 		.then(result => {
 			this.setData({
-				catesList: result.data.message
+				catesList: result
 			})
 		})
 	},
-	getFloorList() {
+	getSceneList() {
 		request({
-			url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata"
+			url: "http://localhost:2020/mini/scene-image/getSticky"
+		})
+		.then(result => {
+			console.log(result)
+			this.setData({
+				sceneList: result
+			})
+		})
+	},
+	getRouteList() {
+		request({
+			url: "http://localhost:8080/mini/route-image/list"
 		})
 		.then(result => {
 			this.setData({
-				floorList: result.data.message
+				routeList: result
+			})
+		})
+	},
+	getActivityList() {
+		request({
+			url: "http://localhost:8080/mini/activity-image/list"
+		})
+		.then(result => {
+			this.setData({
+				activityList: result
 			})
 		})
 	}

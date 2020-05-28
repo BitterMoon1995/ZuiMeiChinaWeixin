@@ -1,0 +1,13 @@
+swiper {
+    width: 100%;
+    height: calc(100vw*280/750);
+}
+swiper image {
+    width: 100%;
+}
+.richText {
+    width: 100%;
+}
+.richText image{
+    width: 100%;
+}

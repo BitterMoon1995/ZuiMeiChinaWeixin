@@ -5,11 +5,14 @@
 		"pages/my/my",
 		"pages/cart/cart",
 		"pages/search/search",
-		"pages/logs/logs"
-	],
+		"pages/logs/logs",
+      "pages/scene/test1/test1"
+    ],
 	"window": {
-	  "navigationStyle": "custom",
-	  "backgroundColor": "#fff"
+	  "backgroundTextStyle": "light",
+	  "navigationBarBackgroundColor": "#01B0F1",
+	  "navigationBarTitleText": "最美中国",
+	  "navigationBarTextStyle": "white"
 	},
 	"tabBar": {
 		"custom": true,
