@@ -1,0 +1,43 @@
+page{
+  background-color: #d3d3d3;
+  padding: 20rpx;
+}
+.search_row{
+  height: 60rpx;
+  display: flex;
+  input{
+    flex: 4;
+    height: 100%;
+    background-color: white;
+    padding-left: 20rpx;//调整字体向右偏移
+    margin-right: 10rpx;
+    border-radius: 20rpx;
+  }
+  button{
+    flex: 1;
+    height: 100%;
+    padding: 0;
+
+    border-radius: 20rpx;
+
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.search_content{
+  margin-top: 30rpx;
+  .search_item{
+    background-color: white;
+
+    font-size: 28rpx;
+    padding: 15rpx 10rpx;
+    border-bottom: 1rpx solid #ccc;
+
+    overflow: hidden;
+    white-space: nowrap;//规定段落中的文本不进行换行
+    text-overflow: ellipsis;//显示省略符号来代表被修剪的文本
+  }
+}
+

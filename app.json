@@ -1,46 +1,48 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/category/category",
-		"pages/my/my",
-		"pages/cart/cart",
-		"pages/search/search",
-		"pages/logs/logs",
-      "pages/scene/test1/test1"
-    ],
-	"window": {
-	  "backgroundTextStyle": "light",
-	  "navigationBarBackgroundColor": "#01B0F1",
-	  "navigationBarTitleText": "最美中国",
-	  "navigationBarTextStyle": "white"
-	},
-	"tabBar": {
-		"custom": true,
-		"color": "#000000",
-		"selectedColor": "#000000",
-		"backgroundColor": "#000000",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/category/category",
-				"text": "官网"
-			},
-			{
-				"pagePath": "pages/my/my",
-				"text": "打卡"
-			},
-			{
-				"pagePath": "pages/cart/cart",
-				"text": "优购"
-			},
-			{
-				"pagePath": "pages/cart/cart",
-				"text": "我的"
-			}
-		]
-	},
-	"style": "v2",
-	"sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/my/my",
+    "pages/cart/cart",
+    "pages/search/search",
+    "pages/logs/logs",
+    "pages/scene/test1/test1",
+    "pages/list/sceneList/sceneList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#01B0F1",
+    "navigationBarTitleText": "最美中国",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "官网"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "打卡"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "优购"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }

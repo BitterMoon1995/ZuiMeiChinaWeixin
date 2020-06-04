@@ -1,2 +1,15 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="search_row">
+    <input value="" placeholder="请输入您感兴趣的内容"></input>
+    <button>搜索</button>
+</view>
+<view class="search_content">
+    <view class="search_item">
+        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
+    </view>
+    <view class="search_item">
+        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
+    </view>
+    <view class="search_item">
+        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
+    </view>
+</view>

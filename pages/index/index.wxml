@@ -1,6 +1,8 @@
 <!--index.wxml-->
 <view class="yougou_index">
-	<search></search>
+	<search>
+		搜索活动、景区、线路
+	</search>
 	<view class="sliders">
 		<swiper autoplay indicator-dots circular interval="2500">
 			<swiper-item wx:for="{{sliderList.data}}" wx:key="id">
@@ -21,7 +23,7 @@
 		<view class="floor">
 			<view class="floorText">
 				<navigator>热门景区</navigator>
-				<navigator>更多</navigator>
+				<navigator url="/pages/list/sceneList/sceneList">更多</navigator>
 			</view>
 			<view class="floorImgs">
 				<navigator wx:for="{{sceneList.data}}" wx:key="name" url="{{item.url}}">
