@@ -1,3 +1,6 @@
+import {
+  request
+} from "../../request/index.js"
 // pages/search/search.js
 Page({
 
@@ -5,7 +8,33 @@ Page({
    * 页面的初始数据
    */
   data: {
+    condition:'',
+    type:2,
+    resultList:[]
+  },
 
+  handleInput(e){
+    this.setData({
+      condition:e.detail.value
+    })
+  },
+
+  search() {
+    if (this.data.type===2){
+      if (!this.data.condition.trim()) return
+      request({
+        url:'http://localhost:2020/mini/scene/search',
+        data:{
+          condition:this.data.condition
+        }
+      })
+      .then(result=>{
+        console.log(result.data)
+        this.setData({
+          resultList:result.data
+        })
+      })
+    }
   },
 
   /**

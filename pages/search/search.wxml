@@ -1,15 +1,10 @@
 <view class="search_row">
-    <input value="" placeholder="请输入您感兴趣的内容"></input>
-    <button>搜索</button>
+    <input value="{{condition}}" placeholder="请输入您感兴趣的内容" bind:input="handleInput"></input>
+    <button bind:tap="search">搜索</button>
 </view>
 <view class="search_content">
-    <view class="search_item">
-        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
-    </view>
-    <view class="search_item">
-        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
-    </view>
-    <view class="search_item">
-        nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger
-    </view>
+    <navigator class="search_item" wx:for="{{resultList}}"
+               wx:key="name" url="{{item.url}}">
+        {{item.name}} {{item.slogan}}
+    </navigator>
 </view>
