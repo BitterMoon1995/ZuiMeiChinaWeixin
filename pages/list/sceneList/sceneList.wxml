@@ -1,2 +1,20 @@
-<!--pages/list/sceneList.wxml-->
-<text>pages/list/sceneList.wxml</text>
+<view class="search_row">
+    <input value="{{condition}}" placeholder="请输入您感兴趣的景区" bind:input="handleInput"></input>
+    <button bind:tap="search">搜索</button>
+</view>
+<view class="line"></view>
+
+<view class="{{showScenes === true ? 'scenes' : 'nigger'}}">
+    <navigator class="scene" wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
+        <image src="{{item.src}}" mode="widthFix"></image>
+        <text class="name">{{item.name}}</text>
+        <text class="slogan">{{item.slogan}}</text>
+    </navigator>
+</view>
+
+<view class="{{showScenes === true ? 'nigger' : 'search_item'}}">
+    <navigator class="search_item" wx:for="{{resultList}}"
+               wx:key="name" url="{{item.url}}">
+        {{item.name}} {{item.slogan}}
+    </navigator>
+</view>

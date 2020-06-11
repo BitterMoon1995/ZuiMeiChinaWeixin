@@ -14,7 +14,7 @@
 	</view>
 
 	<view class="categories">
-		<navigator wx:for="{{catesList.data}}" wx:key="src">
+		<navigator wx:for="{{catesList.data}}" wx:key="src" url="{{item.url}}">
 			<image mode="widthFix" src="{{item.src}}"></image>
 		</navigator>
 	</view>

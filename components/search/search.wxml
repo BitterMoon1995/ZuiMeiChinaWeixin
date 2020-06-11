@@ -1,6 +1,6 @@
 <!--components/search/search.wxml-->
 <view class="searchInput" bind:tap="search">
-    <navigator url="/pages/search/search?type=2">
+    <navigator url="/pages/search/search?type=0">
         <slot></slot>
     </navigator>
 </view>
