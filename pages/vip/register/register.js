@@ -1,24 +1,34 @@
+import {
+    request
+} from "../../../request/index"
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        phone: '',
-        realName: '',
-        idNum:'',
-
+        vipCard: {
+            phone: '',
+            realName: '',
+            idNum: '',
+            address: '',
+            photoSrc: ''
+        },
         imgs: [],
         hide: false,
     },
     phone(e) {
-        this.setData({phone:e.detail.value})
+        this.data.vipCard.phone = e.detail.value
     },
-    realName(e){
-        this.setData({real_name:e.detail.value})
+    realName(e) {
+        this.data.vipCard.realName = e.detail.value
     },
-    idNum(e){
-        this.setData({idNum:e.detail.value})
+    idNum(e) {
+        this.data.vipCard.idNum = e.detail.value
+    },
+    address(e) {
+        this.data.vipCard.address = e.detail.value
     },
     // 上传图片
     chooseImg: function (e) {
@@ -44,6 +54,15 @@ Page({
                 let tempFilePaths = res.tempFilePaths;
                 that.setData({hide: true})
                 let imgs = that.data.imgs
+
+                wx.uploadFile({
+                    url: 'http://localhost:2020/upload', //仅为示例，非真实的接口地址
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    success(res) {
+                        that.data.vipCard.photoSrc = res.data
+                    }
+                })
 
                 // console.log(tempFilePaths + '----');
                 for (let i = 0; i < tempFilePaths.length; i++) {
@@ -88,9 +107,43 @@ Page({
     },
 
     upload() {
-        console.log(this.data.phone)
-        console.log(this.data.real_name)
-        console.log(this.data.imgs)
+        let vipCard = this.data.vipCard
+        for (let key in vipCard) {
+            if (vipCard[key].length===0) {
+                wx.showModal({
+                    title: '提示',
+                    content: '您录入的信息不完整',
+                    showCancel: false,
+                    success (res) {
+
+                    }
+                })
+                return
+            }
+        }
+        request({
+            url: 'http://localhost:2020/vip/vip-card/save',
+            data: {
+                'phone': vipCard.phone,
+                'realName': vipCard.realName,
+                'idNum': vipCard.idNum,
+                'address': vipCard.address,
+                'photoSrc': vipCard.photoSrc
+            },
+            method: 'POST'
+        })
+        .then(res=>{
+            wx.showModal({
+                title: '提示',
+                content: '感谢您成为卓行的一员！',
+                showCancel: false,
+                success (res) {
+                    wx.redirectTo({
+                        url: '/pages/vip/vipcenter/vipcenter'
+                    })
+                }
+            })
+        })
     },
 
     clearFont() {

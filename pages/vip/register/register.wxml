@@ -10,7 +10,7 @@
         <input class='input-7' placeholder='您的真实身份证号码' bind:input="idNum"></input>
     </view>
     <view class="lineHeight">收货地址
-        <input class='input-7' type='number' placeholder='收货地址'></input>
+        <input class='input-7' type='number' placeholder='收货地址' bind:input="address"></input>
     </view>
 </view>
 
