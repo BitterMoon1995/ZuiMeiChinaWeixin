@@ -1,0 +1,10 @@
+.input-7 {
+  margin-left: 4%;
+  color: red;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  line-height: 80rpx;
+  vertical-align: middle;
+  width: 65%;
+}
+/*# sourceMappingURL=charge.wxss.map */

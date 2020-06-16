@@ -1,0 +1,7 @@
+<!--pages/vip/charge/charge.wxml-->
+<text>1年365元</text>
+<view class="lineHeight">
+    <text>推荐码(选填)</text>
+    <input class='input-7' type='text' placeholder='由您的推荐人提供的6位号码' bind:input="promoCode" maxlength="{{6}}"></input>
+</view>
+<button bind:tap="charge">确认充值</button>

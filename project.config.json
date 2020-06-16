@@ -85,6 +85,12 @@
 					"pathName": "pages/vip/register/register",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vip/charge/charge",
+					"pathName": "pages/vip/charge/charge",
+					"scene": null
 				}
 			]
 		}

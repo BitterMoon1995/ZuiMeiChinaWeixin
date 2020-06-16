@@ -1,1 +1,2 @@
-<navigator url="/pages/vip/register/register">会员信息注册/修改</navigator>
+<navigator url="/pages/vip/register/register">会员注册</navigator>
+<navigator url="/pages/vip/charge/charge">会员充值</navigator>
