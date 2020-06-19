@@ -54,4 +54,7 @@ button {
 .nigger {
   display: none;
 }
+.upload-img-btn {
+  color: #01B0F1;
+}
 /*# sourceMappingURL=register.wxss.map */

@@ -13,7 +13,8 @@ Page({
             realName: '',
             idNum: '',
             address: '',
-            photoSrc: ''
+            photoSrc: '',
+            gender: 8
         },
         imgs: [],
         hide: false,
@@ -29,6 +30,10 @@ Page({
     },
     address(e) {
         this.data.vipCard.address = e.detail.value
+    },
+    gender(e) {
+        console.log(e.detail.value)
+        this.data.vipCard.gender = e.detail.value
     },
     // 上传图片
     chooseImg: function (e) {
@@ -128,14 +133,15 @@ Page({
                 'realName': vipCard.realName,
                 'idNum': vipCard.idNum,
                 'address': vipCard.address,
-                'photoSrc': vipCard.photoSrc
+                'photoSrc': vipCard.photoSrc,
+                'gender': vipCard.gender
             },
             method: 'POST'
         })
         .then(res=>{
             wx.showModal({
                 title: '提示',
-                content: '感谢您成为卓行的一员！',
+                content: '感谢您成为卓行的尊贵用户！',
                 showCancel: false,
                 success (res) {
                     wx.redirectTo({

@@ -4,13 +4,19 @@
         <input class='input' placeholder='请输入手机号' bind:input="phone" type="number" maxlength="{{11}}"></input>
     </view>
     <view class="lineHeight" type="text">真实姓名
-        <input class='input-15' placeholder='您的真实姓名' bind:input="realName" type="text" maxlength="{{4}}"></input>
+        <input class='input-15' placeholder='您的真实姓名' bind:input="realName" type="text" maxlength="{{5}}"></input>
+    </view>
+    <view class="lineHeight" type="text">您的性别
+        <radio-group bind:change="gender" class='input-15'>
+            <radio value="1" color="#10AEFF">先生</radio>
+            <radio value="0" color="#10AEFF" style="margin-left: 20rpx">女士</radio>
+        </radio-group>
     </view>
     <view class="lineHeight" type="text">身份证号码
         <input class='input-7' placeholder='您的真实身份证号码' bind:input="idNum" type="idcard" maxlength="{{18}}"></input>
     </view>
     <view class="lineHeight">收货地址
-        <input class='input-7' type='text' placeholder='收货地址' bind:input="address" maxlength="{{30}}"></input>
+        <input class='input-7' type='text' placeholder='收货地址' bind:input="address" maxlength="{{20}}"></input>
     </view>
 </view>
 
