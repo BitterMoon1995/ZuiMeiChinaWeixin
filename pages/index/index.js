@@ -60,7 +60,6 @@ Page({
 			url: "http://localhost:2020/mini/scene-image/getSticky"
 		})
 		.then(result => {
-			console.log(result)
 			this.setData({
 				sceneList: result
 			})

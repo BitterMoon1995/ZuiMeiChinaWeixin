@@ -2,6 +2,8 @@ import {
     request
 } from "../../../request/index"
 
+let app = getApp()
+
 Page({
 
     /**
@@ -9,6 +11,7 @@ Page({
      */
     data: {
         vipCard: {
+            openid: '',
             phone: '',
             realName: '',
             idNum: '',
@@ -129,6 +132,7 @@ Page({
         request({
             url: 'http://localhost:2020/vip/vip-card/save',
             data: {
+                'openid': vipCard.openid,
                 'phone': vipCard.phone,
                 'realName': vipCard.realName,
                 'idNum': vipCard.idNum,
@@ -158,6 +162,12 @@ Page({
         })
     },
 
+
+    onLoad(query) {
+        let openid = app.globalData.openid
+        console.log(openid)
+        this.data.vipCard.openid = openid
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
