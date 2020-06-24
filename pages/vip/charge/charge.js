@@ -1,9 +1,9 @@
 // pages/vip/charge/charge.js
-import {
-    request
-} from "../../../request/index"
+import {request} from "../../../request/index"
 
 let app = getApp()
+
+const md5 = require('../../../utils/md5')
 
 Page({
 
@@ -11,7 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        promoCode: ''
+        promoCode: '',
+        prepay_id: '',
+        nigger: null
     },
     promoCode(e) {
         this.data.promoCode = e.detail.value
@@ -29,26 +31,34 @@ Page({
             },
             method: 'POST'
         })
+        .then(res=>{
+            let nigger = res.data
+            console.log(nigger)
+
+            let p = 'prepay_id='+res.data.packageZ
+            console.log(p)
+            this.setData({nigger:res.data})
+
+            wx.requestPayment({
+                timeStamp: res.data.timeStamp,
+                nonceStr: res.data.nonceStr,
+                package: p,
+                signType: 'MD5',
+                paySign: res.data.paySign,
+                success(res) {
+                    console.log(res)
+                },
+                fail(res) {
+                }
+            })
+        })
 
 
-        // let time = new Date().getTime();
-        // let randomS = this.randomString(32)
-        // wx.requestPayment({
-        //     timeStamp: time.toString(),
-        //     nonceStr: randomS,
-        //     package: 'prepay_id=wx2017033010242291fcfe0db70013231072',
-        //     signType: 'MD5',
-        //     paySign: 'MD5(appId=wxd678efh567hg6787&nonceStr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=prepay_id=wx2017033010242291fcfe0db70013231072&signType=MD5&timeStamp=1490840662&key=qazwsxedcrfvtgbyhnujmikolp111111) = 22D9B4E54AB1950F51E0649E8810ACD6\n',
-        //     success(res) {
-        //     },
-        //     fail(res) {
-        //     }
-        // })
     },
 
     randomString(len) {
         len = len || 32;
-        let chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345678';
         /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
         let length = chars.length;
         let pwd = '';
