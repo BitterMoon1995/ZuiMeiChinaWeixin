@@ -37,6 +37,7 @@ Page({
 
             let p = 'prepay_id='+res.data.packageZ
             console.log(p)
+            console.log(res.data.paySign)
             this.setData({nigger:res.data})
 
             wx.requestPayment({
@@ -55,19 +56,6 @@ Page({
 
 
     },
-
-    randomString(len) {
-        len = len || 32;
-        let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345678';
-        /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-        let length = chars.length;
-        let pwd = '';
-        for (let i = 0; i < len; i++) {
-            pwd += chars.charAt(Math.floor(Math.random() * length));
-        }
-        return pwd;
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */

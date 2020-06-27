@@ -116,19 +116,19 @@ Page({
 
     upload() {
         let vipCard = this.data.vipCard
-        for (let key in vipCard) {
-            if (vipCard[key].length===0) {
-                wx.showModal({
-                    title: '提示',
-                    content: '您录入的信息不完整',
-                    showCancel: false,
-                    success (res) {
-
-                    }
-                })
-                return
-            }
-        }
+        // for (let key in vipCard) {
+        //     if (vipCard[key].length===0) {
+        //         wx.showModal({
+        //             title: '提示',
+        //             content: '您录入的信息不完整',
+        //             showCancel: false,
+        //             success (res) {
+        //
+        //             }
+        //         })
+        //         return
+        //     }
+        // }
         request({
             url: 'http://localhost:2020/vip/vip-card/save',
             data: {
@@ -137,7 +137,8 @@ Page({
                 'realName': vipCard.realName,
                 'idNum': vipCard.idNum,
                 'address': vipCard.address,
-                'photoSrc': vipCard.photoSrc,
+                // 'photoSrc': vipCard.photoSrc,
+                'photoSrc': 'https://gd3.alicdn.com/imgextra/i2/801955496/O1CN01C9Pp6h1qTDNVlYjsf_!!801955496.jpg_400x400.jpg',
                 'gender': vipCard.gender
             },
             method: 'POST'
