@@ -3,8 +3,6 @@ import {request} from "../../../request/index"
 
 let app = getApp()
 
-const md5 = require('../../../utils/md5')
-
 Page({
 
     /**
@@ -13,17 +11,15 @@ Page({
     data: {
         promoCode: '',
         prepay_id: '',
-        nigger: null
+        nigger: null,
+        openid: ''
     },
     promoCode(e) {
         this.data.promoCode = e.detail.value
     },
 
-
     charge(e) {
-
-        let openid = app.globalData.openid
-
+        let openid = this.data.openid
         request({
             url: "http://localhost:2020/vip/vip-card/pay",
             data: {
@@ -33,21 +29,27 @@ Page({
         })
         .then(res=>{
             let nigger = res.data
-            console.log(nigger)
+            let nonceStr = res.data.nonceStr
 
             let p = 'prepay_id='+res.data.packageZ
-            console.log(p)
-            console.log(res.data.paySign)
             this.setData({nigger:res.data})
 
             wx.requestPayment({
                 timeStamp: res.data.timeStamp,
-                nonceStr: res.data.nonceStr,
+                nonceStr: nonceStr,
                 package: p,
                 signType: 'MD5',
                 paySign: res.data.paySign,
                 success(res) {
-                    console.log(res)
+                    request({
+                        url:"http://localhost:2020/vip/vip-card/charge",
+                        data:{
+                            'openid': openid,
+                            'nonceStr': nonceStr
+                        },
+                        method: 'post',
+                        header: {'content-type': 'application/x-www-form-urlencoded'}
+                    })
                 },
                 fail(res) {
                 }
@@ -60,7 +62,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        let that = this
+        wx.getStorage(
+            {
+                key: 'openid',
+                success: result => {
+                    console.log(result)
+                    that.setData({openid:result.data})
+                }
+            }
+        )
     },
 
     /**

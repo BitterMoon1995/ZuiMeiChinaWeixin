@@ -1,10 +1,13 @@
-<button bind:tap="login">会员登陆</button>
-<button>
-    <navigator url="/pages/vip/register/register">会员注册</navigator>
-</button>
-<button>
-    <navigator url="/pages/vip/charge/charge">会员充值</navigator>
-</button>
+<view>
+    <image src="">会员滴图片</image>
+    <button bind:tap="login">会员登陆</button>
+    <button>
+        <navigator url="/pages/vip/register/register">会员注册</navigator>
+    </button>
+    <button>
+        <navigator url="/pages/vip/charge/charge">会员充值</navigator>
+    </button>
 
-        <!-- 需要使用 button 来授权登录 -->
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    <!-- 需要使用 button 来授权登录 -->
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+</view>

@@ -18,6 +18,9 @@ App({
               code: res.code
             },
             success(res){
+              wx.setStorage({
+                key:"openid",data:res.data.openid
+              })
               that.globalData.openid = res.data.openid
             }
           })
