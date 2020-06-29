@@ -1,6 +1,7 @@
 import {
     request
 } from "../../../request/index"
+
 let app = getApp()
 Page({
 
@@ -9,7 +10,32 @@ Page({
      */
     data: {
         canIUse: true,
-        openid: ''
+        openid: '',
+        remainingDays: 0,
+        expirationTime: null,
+        vipCard: {
+            openid: '',
+            phone: '',
+            realName: '',
+            idNum: '',
+            address: '',
+            photoSrc: '',
+            gender: 8,
+            expirationTime: ''
+        }
+    },
+
+    getOpenid() {
+        let that = this
+        wx.getStorage(
+            {
+                key: 'openid',
+                success: result => {
+                    that.setData({openid: result.data})
+                }
+            }
+        )
+        return this.data.openid
     },
 
     /**
@@ -17,41 +43,51 @@ Page({
      */
     onLoad: function (options) {
         let that = this
-        // 查看是否授权
-        wx.getSetting({
-            success(res) {
-                if (res.authSetting['scope.userInfo']) {
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                    wx.getUserInfo({
-                        success: function (res) {
-                            console.log(res.userInfo)
-                        }
-                    })
-                }
-            }
-        })
+
         wx.getStorage({
                 key: 'openid',
                 success: result => {
                     let openid = result.data
-                    that.setData({openid:openid})
+                    that.setData({openid: openid})
+
                     request({
-                        url:'http://localhost:2020/vip/vip-card/getVipInfo',
-                        data:{openid:openid}
+                        url: 'http://localhost:2020/vip/vip-card/getVipInfo',
+                        data: {openid: openid}
                     })
-                    .then(res=>{
-                        console.log(res.data)
+                    .then(res => {
+                        let expirationTime = res.data.expirationTime.slice(0,10)
+                        that.setData({
+                            expirationTime : expirationTime
+                        })
+                    })
+                    .then(function () {
+                        that.getRemainingTime()
                     })
                 }
-            }
-        )
+            })
+    },
+
+    getRemainingTime() {
+        let expirationTime = this.data.expirationTime
+        let expTime = new Date(expirationTime)
+        let expTimeTS = expTime.getTime()//毫秒，一天有86400000毫秒
+        console.log(expTimeTS)
+
+        let currentTime = new Date()
+        let currentTimeTS=currentTime.getTime()
+
+        let remainingDays = (expTimeTS - currentTimeTS) / 86400000
+        let result = remainingDays.toFixed(0)
+
+        this.setData({
+            remainingDays:result,
+        })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**

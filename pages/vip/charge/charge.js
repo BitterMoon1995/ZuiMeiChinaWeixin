@@ -19,7 +19,8 @@ Page({
     },
 
     charge(e) {
-        let openid = this.data.openid
+        let openid = this.getOpenid()
+        console.log(this.getOpenid())
         request({
             url: "http://localhost:2020/vip/vip-card/pay",
             data: {
@@ -58,20 +59,25 @@ Page({
 
 
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+
+    getOpenid() {
         let that = this
         wx.getStorage(
             {
                 key: 'openid',
                 success: result => {
-                    console.log(result)
                     that.setData({openid:result.data})
                 }
             }
         )
+        return this.data.openid
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        this.getOpenid()
     },
 
     /**

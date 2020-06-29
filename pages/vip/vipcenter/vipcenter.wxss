@@ -1,1 +1,29 @@
-/* pages/vip/vipcenter/vipcenter.wxss */
+.cardContainer {
+  height: 500rpx;
+  position: relative;
+  overflow: hidden;
+}
+.cardContainer .cardImg {
+  position: absolute;
+  width: 600rpx;
+  left: 75rpx;
+  top: 0;
+}
+.cardContainer .cardImg image {
+  width: 100%;
+}
+.cardContainer .expirationTime {
+  color: white;
+  position: absolute;
+  width: 300rpx;
+  top: 30rpx;
+  right: 50rpx;
+  text-align: center;
+}
+.cardContainer .remainingDays {
+  width: 100%;
+  position: absolute;
+  bottom: 20rpx;
+  text-align: center;
+}
+/*# sourceMappingURL=vipcenter.wxss.map */

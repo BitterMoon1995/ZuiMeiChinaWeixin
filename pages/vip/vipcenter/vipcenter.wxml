@@ -1,13 +1,18 @@
-<view>
-    <image src="">会员滴图片</image>
-    <button bind:tap="login">会员登陆</button>
+<view class="container">
+    <view class="cardContainer">
+        <view class="cardImg">
+            <image src="http://192.168.156.128//group1/M00/00/07/wKicgF75ve-AEppwAAKgq_54e9o932.png" mode="widthFix">
+            </image>
+        </view>
+        <view class="expirationTime">{{expirationTime}}</view>
+        <view class="remainingDays">您还可以尊享{{remainingDays}}天的会员哦！</view>
+    </view>
+    <button bind:tap="login">收益查看</button>
     <button>
-        <navigator url="/pages/vip/register/register">会员注册</navigator>
+        <navigator url="/pages/vip/register/register">信息修改</navigator>
     </button>
     <button>
-        <navigator url="/pages/vip/charge/charge">会员充值</navigator>
+        <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
 
-    <!-- 需要使用 button 来授权登录 -->
-    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 </view>
