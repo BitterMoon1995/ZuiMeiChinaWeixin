@@ -1,18 +1,26 @@
-<view class="container">
+<view class="isVIP" wx:if="{{isVIP}}">
     <view class="cardContainer">
         <view class="cardImg">
-            <image src="http://192.168.156.128//group1/M00/00/07/wKicgF75ve-AEppwAAKgq_54e9o932.png" mode="widthFix">
+            <image src="http://192.168.156.128//group1/M00/00/07/wKicgF7791CAad2iAAJK9ZFHzck026.png" mode="widthFix">
             </image>
         </view>
         <view class="expirationTime">{{expirationTime}}</view>
-        <view class="remainingDays">您还可以尊享{{remainingDays}}天的会员哦！</view>
+        <view class="remainingDays">您的剩余会员卡天数：{{remainingDays}}</view>
     </view>
     <button bind:tap="login">收益查看</button>
     <button>
-        <navigator url="/pages/vip/register/register">信息修改</navigator>
+        <navigator url="/pages/vip/edit/edit">信息修改</navigator>
     </button>
     <button>
         <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
-
+</view>
+<view class="isNotVIP" wx:if="{{isNotVIP}}">
+    <view>您还未注册会员</view>
+    <button>
+        <navigator url="/pages/vip/register/register">信息注册</navigator>
+    </button>
+    <button>
+        <navigator url="/pages/vip/charge/charge">充值</navigator>
+    </button>
 </view>

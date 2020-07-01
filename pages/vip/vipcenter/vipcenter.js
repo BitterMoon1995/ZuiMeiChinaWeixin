@@ -13,6 +13,9 @@ Page({
         openid: '',
         remainingDays: 0,
         expirationTime: null,
+        isVIP: false,
+        isNotVIP: false,
+        isNotActive: false,
         vipCard: {
             openid: '',
             phone: '',
@@ -52,26 +55,34 @@ Page({
 
                     request({
                         url: 'http://localhost:2020/vip/vip-card/getVipInfo',
+                        // data: {openid: 'openid'}
                         data: {openid: openid}
                     })
                     .then(res => {
+                        if (res.data==='') {
+                            that.setData({isNotVIP: true})
+                            return
+                        }
+
                         let expirationTime = res.data.expirationTime.slice(0,10)
-                        that.setData({
-                            expirationTime : expirationTime
-                        })
-                    })
-                    .then(function () {
-                        that.getRemainingTime()
+                        that.getRemainingTime(expirationTime)
+                        if (that.data.remainingDays<=0) {
+                            that.setData({
+                                isNotActive: true,
+                                remainingDays: 0,
+                                expirationTime: '已过期'
+                            })
+                        }
+
+                        that.setData({isVIP:true})
                     })
                 }
             })
     },
 
-    getRemainingTime() {
-        let expirationTime = this.data.expirationTime
+    getRemainingTime(expirationTime) {
         let expTime = new Date(expirationTime)
         let expTimeTS = expTime.getTime()//毫秒，一天有86400000毫秒
-        console.log(expTimeTS)
 
         let currentTime = new Date()
         let currentTimeTS=currentTime.getTime()
@@ -80,7 +91,8 @@ Page({
         let result = remainingDays.toFixed(0)
 
         this.setData({
-            remainingDays:result,
+            expirationTime:expirationTime,
+            remainingDays:result
         })
     },
 

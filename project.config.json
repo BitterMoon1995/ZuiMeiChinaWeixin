@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "pages/vip/charge/charge",
 					"pathName": "pages/vip/charge/charge",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vip/edit/edit",
+					"pathName": "pages/vip/edit/edit",
 					"scene": null
 				}
 			]

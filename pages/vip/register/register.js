@@ -35,7 +35,6 @@ Page({
         this.data.vipCard.address = e.detail.value
     },
     gender(e) {
-        console.log(e.detail.value)
         this.data.vipCard.gender = e.detail.value
     },
     // 上传图片
@@ -115,20 +114,21 @@ Page({
     },
 
     upload() {
+        this.data.vipCard.openid = this.getOpenid()
         let vipCard = this.data.vipCard
-        // for (let key in vipCard) {
-        //     if (vipCard[key].length===0) {
-        //         wx.showModal({
-        //             title: '提示',
-        //             content: '您录入的信息不完整',
-        //             showCancel: false,
-        //             success (res) {
-        //
-        //             }
-        //         })
-        //         return
-        //     }
-        // }
+        for (let key in vipCard) {
+            if (vipCard[key].length===0) {
+                wx.showModal({
+                    title: '提示',
+                    content: '您录入的信息不完整',
+                    showCancel: false,
+                    success (res) {
+
+                    }
+                })
+                return
+            }
+        }
         request({
             url: 'http://localhost:2020/vip/vip-card/save',
             data: {
@@ -155,6 +155,19 @@ Page({
                 }
             })
         })
+    },
+
+    getOpenid() {
+        let that = this
+        wx.getStorage(
+            {
+                key: 'openid',
+                success: result => {
+                    that.setData({openid: result.data})
+                }
+            }
+        )
+        return this.data.openid
     },
 
     clearFont() {

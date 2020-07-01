@@ -1,0 +1,23 @@
+<view class="container">
+<view class="lineHeight" type="number">手机号码
+    <input class='input' placeholder='请输入手机号' bind:input="phone" type="number" maxlength="{{11}}"></input>
+</view>
+<view class="lineHeight">收货地址
+    <input class='input-7' type='text' placeholder='收货地址' bind:input="address" maxlength="{{20}}"></input>
+</view>
+<view class="weui-uploader__bd">
+    <view class='pic' wx:if="{{show}}">
+        <image class='weui-uploader__img'
+               src="{{photoSrc}}"
+               mode="aspectFill" bindtap="previewImg">
+            <icon type='cancel' class="delete-btn" catchtap="deleteImg"></icon>
+        </image>
+    </view>
+
+    <!-- 用来提示用户上传图片 -->
+    <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view>
+    <button class="upload-img-btn" bindtap="chooseImg" type='primary' wx:if="{{!show}}">拍照  / 相册</button>
+</view>
+<button bind:tap="submit">确认修改</button>
+<view class="tips">*您可按需修改，并不要求全部填写</view>
+</view>

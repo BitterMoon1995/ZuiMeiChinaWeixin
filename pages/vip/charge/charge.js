@@ -51,6 +51,11 @@ Page({
                         method: 'post',
                         header: {'content-type': 'application/x-www-form-urlencoded'}
                     })
+                    .then(res=>{
+                        wx.redirectTo({
+                            url: '/pages/vip/vipcenter/vipcenter'
+                        })
+                    })
                 },
                 fail(res) {
                 }

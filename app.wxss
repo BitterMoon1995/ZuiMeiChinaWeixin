@@ -55,7 +55,7 @@ page {
 .line {
   width: 100%;
   margin: 10px auto;
-  border-top: 1px gray solid;
+  border-top: 1px black solid;
 }
 .search_row {
   height: 45rpx;
@@ -91,5 +91,9 @@ page {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.container {
+  padding: 20rpx;
+  overflow: hidden;
 }
 /*# sourceMappingURL=app.wxss.map */

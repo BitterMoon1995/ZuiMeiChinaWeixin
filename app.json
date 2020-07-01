@@ -10,7 +10,8 @@
     "pages/list/sceneList/sceneList",
     "pages/vip/vipcenter/vipcenter",
     "pages/vip/register/register",
-    "pages/vip/charge/charge"
+    "pages/vip/charge/charge",
+    "pages/vip/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

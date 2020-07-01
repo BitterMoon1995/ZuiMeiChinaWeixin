@@ -21,10 +21,6 @@
   border-bottom: 1px solid #ccc;
   font-size: 30rpx;
 }
-.container {
-  align-items: left;
-  padding: 0 0 0 15rpx;
-}
 .numberInfo {
   font-size: 24rpx;
   text-indent: 15rpx;
