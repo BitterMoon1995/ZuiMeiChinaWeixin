@@ -1,3 +1,4 @@
+<view class="container">
 <view class="isVIP" wx:if="{{isVIP}}">
     <view class="cardContainer">
         <view class="cardImg">
@@ -23,4 +24,5 @@
     <button>
         <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
+</view>
 </view>

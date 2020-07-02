@@ -59,14 +59,23 @@ Page({
                         data: {openid: openid}
                     })
                     .then(res => {
-                        if (res.data==='') {
+                        console.log(res.data)
+                        if (res.data==='') {//未注册
                             that.setData({isNotVIP: true})
                             return
                         }
-
+                        if (res.data.expirationTime==null) {//未充值过
+                            that.setData({
+                                isNotActive: true,
+                                remainingDays: 0,
+                                expirationTime: '已过期',
+                                isVIP:true
+                            })
+                            return
+                        }
                         let expirationTime = res.data.expirationTime.slice(0,10)
                         that.getRemainingTime(expirationTime)
-                        if (that.data.remainingDays<=0) {
+                        if (that.data.remainingDays<=0) {//充值过但过期了
                             that.setData({
                                 isNotActive: true,
                                 remainingDays: 0,

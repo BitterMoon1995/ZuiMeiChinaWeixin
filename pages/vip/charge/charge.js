@@ -12,15 +12,57 @@ Page({
         promoCode: '',
         prepay_id: '',
         nigger: null,
-        openid: ''
+        openid: '',
+
+        timer: null,
+
+        isOK: true,
+        isWrong: false,
+
+        iconSize: [20, 30, 40, 50, 60, 70],
+        iconColor: [
+            'red', 'orange', 'yellow', 'green', 'rgb(0,255,255)', 'blue', 'purple'
+        ],
+        iconType: [
+            'success', 'success_no_circle', 'info', 'warn', 'waiting', 'cancel', 'download', 'search', 'clear'
+        ]
     },
     promoCode(e) {
-        this.data.promoCode = e.detail.value
+        let that = this
+
+        if (e.detail.value.length === 8) {
+            let pmCode = e.detail.value
+            this.data.promoCode = pmCode
+            let openid = this.getOpenid()
+            console.log(openid)
+            this.timer = setInterval(function () {
+                that.verifyCode(openid, pmCode)
+            }, 2000)
+        }
+    },
+    verifyCode(openid,pmCode) {
+        let that = this
+        request({
+            url:"http://localhost:2020/vip/vip-card/verifyPmCode",
+            data:{
+                'openid': openid,
+                'pmCode': pmCode,
+            },
+            method: 'post',
+            header: {'content-type': 'application/x-www-form-urlencoded'}
+        })
+        .then(res=>{
+            clearTimeout(that.timer)
+            console.log(res.data)
+            if (res.data!==200){
+
+            }
+        })
     },
 
     charge(e) {
+        let that = this
         let openid = this.getOpenid()
-        console.log(this.getOpenid())
         request({
             url: "http://localhost:2020/vip/vip-card/pay",
             data: {
@@ -29,7 +71,6 @@ Page({
             method: 'POST'
         })
         .then(res=>{
-            let nigger = res.data
             let nonceStr = res.data.nonceStr
 
             let p = 'prepay_id='+res.data.packageZ
@@ -42,11 +83,13 @@ Page({
                 signType: 'MD5',
                 paySign: res.data.paySign,
                 success(res) {
+                    let promoCode = that.data.promoCode
                     request({
                         url:"http://localhost:2020/vip/vip-card/charge",
                         data:{
                             'openid': openid,
-                            'nonceStr': nonceStr
+                            'nonceStr': nonceStr,
+                            'promoCode': promoCode
                         },
                         method: 'post',
                         header: {'content-type': 'application/x-www-form-urlencoded'}

@@ -2,4 +2,25 @@ page {
   background-color: white;
   padding: 20rpx;
 }
+.search_row {
+  display: flex;
+  align-items: center;
+}
+.search_row input {
+  background-color: white;
+  border: #01B0F1 2px solid;
+  border-radius: 20px;
+  font-size: 40rpx;
+}
+.search_row button {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: white;
+  border: #01B0F1 1px solid;
+  border-radius: 20px;
+  font-size: 35rpx;
+}
+.search_content navigator {
+  font-size: 40rpx;
+}
 /*# sourceMappingURL=search.wxss.map */

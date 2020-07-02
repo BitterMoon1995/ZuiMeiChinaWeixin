@@ -15,7 +15,6 @@
     </view>
 
     <!-- 用来提示用户上传图片 -->
-    <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view>
     <button class="upload-img-btn" bindtap="chooseImg" type='primary' wx:if="{{!show}}">拍照  / 相册</button>
 </view>
 <button bind:tap="submit">确认修改</button>

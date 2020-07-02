@@ -17,7 +17,7 @@
   position: absolute;
   width: 300rpx;
   top: 30rpx;
-  right: 50rpx;
+  right: 20rpx;
   text-align: center;
 }
 .cardContainer .remainingDays {
@@ -25,5 +25,8 @@
   position: absolute;
   bottom: 20rpx;
   text-align: center;
+}
+.isVIP {
+  margin-top: 50rpx;
 }
 /*# sourceMappingURL=vipcenter.wxss.map */

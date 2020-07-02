@@ -19,6 +19,7 @@ Page({
             photoSrc: '',
             gender: 8
         },
+        photoSrc: '',
         imgs: [],
         hide: false,
     },
@@ -37,67 +38,18 @@ Page({
     gender(e) {
         this.data.vipCard.gender = e.detail.value
     },
-    // 上传图片
-    chooseImg: function (e) {
-        let that = this;
-        let imgs = this.data.imgs;
-        if (imgs.length >= 9) {
-            this.setData({
-                lenMore: 1
-            });
-            setTimeout(function () {
-                that.setData({
-                    lenMore: 0
-                });
-            }, 2500);
-            return false;
-        }
+    chooseImg(e) {
+        let that = this
         wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                let tempFilePaths = res.tempFilePaths;
-                that.setData({hide: true})
-                let imgs = that.data.imgs
-
-                wx.uploadFile({
-                    url: 'http://localhost:2020/upload', //仅为示例，非真实的接口地址
-                    filePath: tempFilePaths[0],
-                    name: 'file',
-                    success(res) {
-                        that.data.vipCard.photoSrc = res.data
-                    }
-                })
-
-                // console.log(tempFilePaths + '----');
-                for (let i = 0; i < tempFilePaths.length; i++) {
-                    if (imgs.length >= 9) {
-                        that.setData({
-                            imgs: imgs
-                        });
-                        return false;
-                    } else {
-                        imgs.push(tempFilePaths[i]);
-                    }
-                }
-                // console.log(imgs);
-                that.setData({
-                    imgs: imgs
-                });
+            count: 1,
+            success: res => {
+                let temp = res.tempFilePaths[0]
+                that.setData({photoSrc: temp, show: true})
             }
-        });
+        })
     },
-    // 删除图片
-    deleteImg: function (e) {
-        let imgs = this.data.imgs;
-        let index = e.currentTarget.dataset.index;
-        imgs.splice(index, 1);
-        this.setData({
-            imgs: imgs,
-            hide: false
-        });
+    deleteImg() {
+        this.setData({photoSrc: '', show: false})
     },
     // 预览图片
     previewImg: function (e) {
@@ -114,47 +66,69 @@ Page({
     },
 
     upload() {
+        let that = this
+        //校验非空
         this.data.vipCard.openid = this.getOpenid()
         let vipCard = this.data.vipCard
+        vipCard.photoSrc = this.data.photoSrc
         for (let key in vipCard) {
-            if (vipCard[key].length===0) {
+            if (vipCard[key] === '' || vipCard.gender===8) {
                 wx.showModal({
                     title: '提示',
                     content: '您录入的信息不完整',
                     showCancel: false,
-                    success (res) {
-
+                    success(res) {
                     }
                 })
                 return
             }
         }
-        request({
-            url: 'http://localhost:2020/vip/vip-card/save',
-            data: {
-                'openid': vipCard.openid,
-                'phone': vipCard.phone,
-                'realName': vipCard.realName,
-                'idNum': vipCard.idNum,
-                'address': vipCard.address,
-                // 'photoSrc': vipCard.photoSrc,
-                'photoSrc': 'https://gd3.alicdn.com/imgextra/i2/801955496/O1CN01C9Pp6h1qTDNVlYjsf_!!801955496.jpg_400x400.jpg',
-                'gender': vipCard.gender
-            },
-            method: 'POST'
+        //上传图片
+        wx.uploadFile({
+            url: 'http://localhost:2020/upload',
+            filePath: that.data.photoSrc,
+            name: 'file',
+            complete(res) {
+                that.data.vipCard.photoSrc = res.data
+                //上传信息
+                request({
+                    url: 'http://localhost:2020/vip/vip-card/save',
+                    data: {
+                        'openid': vipCard.openid,
+                        'phone': vipCard.phone,
+                        'realName': vipCard.realName,
+                        'idNum': vipCard.idNum,
+                        'address': vipCard.address,
+                        'photoSrc': vipCard.photoSrc,
+                        'gender': vipCard.gender
+                    },
+                    method: 'POST'
+                })
+                //提示
+                .then(res => {
+                    if (res.data) {
+                        wx.showModal({
+                            title: '提示',
+                            content: '感谢您成为卓行的尊贵用户！',
+                            showCancel: false,
+                            success(res) {
+                                wx.redirectTo({
+                                    url: '/pages/vip/vipcenter/vipcenter'
+                                })
+                            }
+                        })
+                    } else {
+                        wx.showToast({
+                            title: '服务器开小差啦',
+                            icon: 'none',
+                            duration: 2000
+                        })
+                    }
+                })
+            }
+
         })
-        .then(res=>{
-            wx.showModal({
-                title: '提示',
-                content: '感谢您成为卓行的尊贵用户！',
-                showCancel: false,
-                success (res) {
-                    wx.redirectTo({
-                        url: '/pages/vip/vipcenter/vipcenter'
-                    })
-                }
-            })
-        })
+
     },
 
     getOpenid() {
@@ -163,7 +137,7 @@ Page({
             {
                 key: 'openid',
                 success: result => {
-                    that.setData({openid: result.data})
+                    that.data.vipCard.openid = result.data
                 }
             }
         )
@@ -179,7 +153,6 @@ Page({
 
     onLoad(query) {
         let openid = app.globalData.openid
-        console.log(openid)
         this.data.vipCard.openid = openid
     },
 

@@ -1,10 +1,33 @@
 .input-7 {
-  margin-left: 4%;
   color: red;
   display: inline-block;
   /* border: 1px solid #ccc; */
   line-height: 80rpx;
   vertical-align: middle;
-  width: 65%;
+  width: 30%;
+}
+.lineHeight {
+  line-height: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+  position: relative;
+}
+.lineHeight .input-7 {
+  margin-left: 20rpx;
+  padding-left: 20rpx;
+  display: inline-block;
+  width: 350rpx;
+  /* border: 1px solid #ccc; */
+  line-height: 80rpx;
+  vertical-align: middle;
+  color: black;
+  border: #01B0F1 2px solid;
+  border-radius: 20px;
+}
+.lineHeight .icon-box {
+  vertical-align: middle;
+  position: absolute;
+  right: 50rpx;
+  top: 19rpx;
 }
 /*# sourceMappingURL=charge.wxss.map */

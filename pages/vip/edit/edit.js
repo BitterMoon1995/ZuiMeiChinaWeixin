@@ -11,7 +11,6 @@ Page({
     phone: '',
     address: '',
     photoSrc: '',
-
     openid: '',
 
     show: false
@@ -41,12 +40,11 @@ Page({
   submit() {
     let that = this
     wx.uploadFile({
-      url: 'http://localhost:2020/upload', //仅为示例，非真实的接口地址
+      url: 'http://localhost:2020/upload',
       filePath: that.data.photoSrc,
       name: 'file',
       complete(res) {
         that.setData({photoSrc:res.data})
-        console.log(that.data)
         request({
           url:"http://localhost:2020/vip/vip-card/edit",
           data:{
@@ -57,6 +55,32 @@ Page({
           },
           method: 'post',
           header: {'content-type': 'application/x-www-form-urlencoded'}
+        })
+        .then(res=>{
+          if (res.data === 200) {
+            wx.showModal({
+              title: '提示',
+              content: '修改成功！',
+              showCancel: false,
+              success (res) {
+                wx.redirectTo({
+                  url: '/pages/vip/vipcenter/vipcenter'
+                })
+              }
+            })
+          }
+          else if (res.data === 401) {
+            wx.showModal({
+              title: '提示',
+              content: '抱歉，一天之内最多修改一次',
+              showCancel: false,
+              success (res) {
+                wx.redirectTo({
+                  url: '/pages/vip/vipcenter/vipcenter'
+                })
+              }
+            })
+          }
         })
       }
     })

@@ -32,6 +32,7 @@ Page({
     },
 
     searchAll() {
+        console.log(this.data)
         if (!this.data.condition.trim()) return
         request({
             url: 'http://localhost:2020/mini/search/overall',

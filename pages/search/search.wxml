@@ -1,10 +1,18 @@
+<view class="container">
 <view class="search_row">
     <input value="{{condition}}" placeholder="请输入您感兴趣的内容" bind:input="handleInput"></input>
-    <button bind:tap="search">搜索</button>
+    <button bind:tap="search" size="default" type="">搜索
+<!--        <view class="icon-box">-->
+<!--            <view class="icon-small-wrp">-->
+<!--                <icon class="icon-small" type="search" size="20"></icon>-->
+<!--            </view>-->
+<!--        </view>-->
+    </button>
 </view>
 <view class="search_content">
     <navigator class="search_item" wx:for="{{resultList}}"
-               wx:key="name" url="{{item.url}}">
+               wx:key="name" url="{{item.url}}" style="font-size: 35rpx">
         {{item.name}} {{item.slogan}}
     </navigator>
+</view>
 </view>
