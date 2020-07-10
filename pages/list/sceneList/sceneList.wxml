@@ -1,5 +1,5 @@
 <view class="search_row">
-    <input value="{{condition}}" placeholder="请输入您感兴趣的景区" bind:input="handleInput"></input>
+    <input value="{{condition}}" placeholder="您感兴趣的景区" bind:input="handleInput" ></input>
     <button bind:tap="search">搜索</button>
 </view>
 <view class="line"></view>
@@ -8,6 +8,8 @@
     <navigator class="scene" wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
         <image src="{{item.src}}" mode="widthFix"></image>
         <text class="name">{{item.name}}</text>
+        <text class="level">{{item.level}}</text>
+        <text class="price">{{item.price}}￥</text>
         <text class="slogan">{{item.slogan}}</text>
     </navigator>
 </view>
@@ -18,3 +20,4 @@
         {{item.name}} {{item.slogan}}
     </navigator>
 </view>
+<tabbar></tabbar>

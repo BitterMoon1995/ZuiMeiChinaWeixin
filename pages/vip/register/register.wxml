@@ -19,7 +19,7 @@
         <input class='input-7' type='text' placeholder='收货地址' bind:input="address" maxlength="{{20}}"></input>
     </view>
 
-    <view class="weui-uploader__bd">
+    <view class="block-img">
         <view class='pic' wx:if="{{show}}">
             <image class='weui-uploader__img'
                    src="{{photoSrc}}"
@@ -29,8 +29,11 @@
         </view>
 
         <!-- 用来提示用户上传图片 -->
-        <button class="upload-img-btn" bindtap="chooseImg" type='primary' wx:if="{{!show}}">拍照  / 相册</button>
+        <button class="singleLineButton" bindtap="chooseImg" type='primary'
+                wx:if="{{!show}}" style="width: 250rpx">
+            拍照/相册
+        </button>
     </view>
 
-<button bind:tap="upload">确认并上传</button>
+    <button bind:tap="upload" class="singleLineButton2" style="width: 250rpx">确认并上传</button>
 </view>

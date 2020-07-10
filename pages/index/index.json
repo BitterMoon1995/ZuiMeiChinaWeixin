@@ -2,5 +2,5 @@
   "usingComponents": {
     "search": "../../components/search/search"
   },
-  "navigationBarTitleText": "最美中国"
+  "navigationStyle": "custom"
 }

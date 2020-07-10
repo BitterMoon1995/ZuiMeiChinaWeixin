@@ -21,12 +21,6 @@ button {
   width: 100%;
   margin-top: 30rpx;
 }
-.pic {
-  float: left;
-  position: relative;
-  margin-right: 9px;
-  margin-bottom: 9px;
-}
 .delete-btn {
   position: absolute;
   top: 0;

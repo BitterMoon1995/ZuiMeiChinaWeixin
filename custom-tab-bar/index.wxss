@@ -3,7 +3,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 50rpx;
+	height: 80rpx;
 	background: white;
 	display: flex;
 	padding-bottom: env(safe-area-inset-bottom);
@@ -33,5 +33,5 @@
 	height: 100%;
 	text-align: center;
 	line-height: 50rpx;
-	font-size: 30rpx;
+	font-size: 32rpx;
 }

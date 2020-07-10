@@ -1,7 +1,8 @@
 .searchInput {
+  width: 300rpx;
   height: 65rpx;
   padding: 10rpx;
-  background-color: var(--themeColor);
+  background-color: pink;
 }
 .searchInput navigator {
   height: 100%;
@@ -12,3 +13,4 @@
   border-radius: 15rpx;
   color: #666;
 }
+/*# sourceMappingURL=search.wxss.map */

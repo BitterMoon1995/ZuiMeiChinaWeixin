@@ -6,18 +6,24 @@
     "pages/cart/cart",
     "pages/search/search",
     "pages/logs/logs",
-    "pages/scene/test1/test1",
     "pages/list/sceneList/sceneList",
+    "pages/join/join",
+
     "pages/vip/vipcenter/vipcenter",
     "pages/vip/register/register",
     "pages/vip/charge/charge",
-    "pages/vip/edit/edit"
+    "pages/vip/edit/edit",
+    "pages/vip/profit/profit",
+
+    "pages/scene/test1/test1"
+
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#01B0F1",
-    "navigationBarTitleText": "最美中国",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "微信接口功能演示",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
   },
   "tabBar": {
     "custom": true,
@@ -30,8 +36,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/category/category",
-        "text": "官网"
+        "pagePath": "pages/vip/vipcenter/vipcenter",
+        "text": "会员中心"
       },
       {
         "pagePath": "pages/my/my",

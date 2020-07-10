@@ -1,6 +1,7 @@
 import {
     request
 } from "../../../request/index"
+let app = getApp()
 
 Page({
 
@@ -52,6 +53,10 @@ Page({
                 resultList: result.data
             })
         })
+    },
+
+    return(){
+        app.return(getCurrentPages())
     },
 
     /**

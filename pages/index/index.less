@@ -1,4 +1,10 @@
+.page{
+	height: 3000rpx;
+}
+
 .sliders{
+	margin-top: 0;
+	margin-bottom: 60rpx;
 	swiper{
 		width: 100%;
 		height: calc(100vw*280/750);
@@ -7,19 +13,25 @@
 		}
 	}
 }
-.categories{
-	navigator{
-		margin-top: 15rpx;
-		float: left;
-		width: 20%;
-		padding: 5rpx,160rpx;
-		text-align: center;
-		image{
-			width: 61%;
-		}
+.banner{
+	margin-top: 30rpx;
+	image{
+		width: 100%;
 	}
-	overflow: hidden;
 }
+//.categories{
+//	navigator{
+//		margin-top: 15rpx;
+//		float: left;
+//		width: 20%;
+//		padding: 5rpx,160rpx;
+//		text-align: center;
+//		image{
+//			width: 61%;
+//		}
+//	}
+//	overflow: hidden;
+//}
 .floorText{
 	position: relative;
 	width: 750rpx;
@@ -28,19 +40,59 @@
 		position: absolute;
 		left: 15rpx;
 		font-weight: bold;
+		font-size: 36rpx;
 	}
 	:nth-child(2){
 		position: absolute;
 		right: 15rpx;
 	}
 }
+
 .floorImgs{
 	display: flex;
+	flex-wrap: wrap; //设置要换行
 	navigator{
-		flex: 1;
+		position: relative;
+		width: 375rpx;
 		padding: 5rpx;
 		image{
 			width: 100%;
 		}
+		.name{
+			font-size: 38rpx;
+			font-family: STXingkai;
+			color: white;
+			position: absolute;
+			left: 0;
+			bottom: 35rpx;
+		}
+		.slogan{
+			margin: 0;
+			padding: 0;
+
+			font-size: 31rpx;
+			font-family: KaiTi;
+			color: white;
+
+			position: absolute;
+			left: 0;
+			bottom: 10rpx;
+		}
+	}
+	navigator:nth-child(-n+2){ //选择其父元素下第1,2个子元素
+		padding-bottom: 0;
+	}
+	navigator:nth-child(n+3){ //选择其父元素下第1,2个子元素
+		padding-top: 0;
+	}
+}
+
+.bottom{
+	margin-top: 60rpx;
+	margin-bottom: 0rpx;
+	display: flex;
+	justify-content: center;
+	image{
+		width: 70%;
 	}
 }

@@ -2,6 +2,7 @@
 import {
 	request
 } from "../../request/index.js"
+let app = getApp()
 //获取应用实例
 Page({
 
@@ -9,6 +10,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		//是否是未过期的会员。条件是isUser为true且isExpired未false
+		isVIP: false,
+
 		sliderList: [],
 		catesList:[],
 		sceneList:[],
@@ -20,20 +24,14 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-		/* 发送异步请求获取轮播图数据 */
-		// wx.request({
-		// 	url:'https://api-hmugo-web.itheima.net/api/public/v1/home/sliderdata',
-		// 	success:(result)=>{
-		// 		this.setData({
-		// 			sliderList:result.data.message
-		// 		})
-		// 	}
-		// })
+		app.getVipInfo(this)
+		console.log(this.data.isVIP)
+
 		this.getSwiperList()
-		this.getCatesList()
+		// this.getCatesList()
 		this.getSceneList()
-		this.getRouteList()
-		this.getActivityList()
+		// this.getRouteList()
+		// this.getActivityList()
 	},
 	getSwiperList() {
 		request({
@@ -57,11 +55,12 @@ Page({
 	},
 	getSceneList() {
 		request({
-			url: "http://localhost:2020/mini/scene-image/getSticky"
+			url: "http://localhost:2020/mini/scene-image/getFloorList"
 		})
 		.then(result => {
+			console.log(result.data)
 			this.setData({
-				sceneList: result
+				sceneList: result.data
 			})
 		})
 	},

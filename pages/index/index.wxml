@@ -1,8 +1,6 @@
 <!--index.wxml-->
 <view class="yougou_index">
-	<search>
-		搜索活动、景区、线路
-	</search>
+
 	<view class="sliders">
 		<swiper autoplay indicator-dots circular interval="2500">
 			<swiper-item wx:for="{{sliderList.data}}" wx:key="id">
@@ -13,45 +11,63 @@
 		</swiper>
 	</view>
 
-	<view class="categories">
-		<navigator wx:for="{{catesList.data}}" wx:key="src" url="{{item.url}}">
-			<image mode="widthFix" src="{{item.src}}"></image>
-		</navigator>
-	</view>
+	<view>嘻嘻</view>
+
+<!--	<view class="categories">-->
+<!--		<navigator wx:for="{{catesList.data}}" wx:key="src" url="{{item.url}}">-->
+<!--			<image mode="widthFix" src="{{item.src}}"></image>-->
+<!--		</navigator>-->
+<!--	</view>-->
+	<navigator class="banner" url="/pages/vip/vipcenter/vipcenter" wx:if="{{!isVIP}}">
+		<image mode="widthFix"
+			   src="http://192.168.156.128//group1/M00/00/08/wKicgF8D0aOAQynIAABPFraUlxo108.jpg"></image>
+	</navigator>
 
 	<view>
 		<view class="floor">
 			<view class="floorText">
-				<navigator>热门景区</navigator>
+				<navigator>盛·景</navigator>
 				<navigator url="/pages/list/sceneList/sceneList">更多</navigator>
 			</view>
 			<view class="floorImgs">
-				<navigator wx:for="{{sceneList.data}}" wx:key="name" url="{{item.url}}">
+				<navigator wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
 					<image mode="widthFix" src="{{item.src}}" bind:tap></image>
+					<text class="name">{{item.name}}</text>
+					<text class="slogan">{{item.slogan}}</text>
 				</navigator>
 			</view>
 		</view>
-		<view class="floor">
-			<view class="floorText">
-				<navigator>精品路线</navigator>
-				<navigator>更多</navigator>
-			</view>
-			<view class="floorImgs">
-				<navigator wx:for="{{routeList.data}}" wx:key="name">
-					<image mode="widthFix" src="{{item.src}}"></image>
-				</navigator>
-			</view>
-		</view>
-		<view class="floor">
-			<view class="floorText">
-				<navigator>知名活动</navigator>
-				<navigator>更多</navigator>
-			</view>
-			<view class="floorImgs">
-				<navigator wx:for="{{activityList.data}}" wx:key="name">
-					<image mode="widthFix" src="{{item.src}}"></image>
-				</navigator>
-			</view>
-		</view>
+<!--		<view class="floor">-->
+<!--			<view class="floorText">-->
+<!--				<navigator>精品路线</navigator>-->
+<!--				<navigator>更多</navigator>-->
+<!--			</view>-->
+<!--			<view class="floorImgs">-->
+<!--				<navigator wx:for="{{routeList.data}}" wx:key="name">-->
+<!--					<image mode="widthFix" src="{{item.src}}"></image>-->
+<!--				</navigator>-->
+<!--			</view>-->
+<!--		</view>-->
+<!--		<view class="floor">-->
+<!--			<view class="floorText">-->
+<!--				<navigator>知名活动</navigator>-->
+<!--				<navigator>更多</navigator>-->
+<!--			</view>-->
+<!--			<view class="floorImgs">-->
+<!--				<navigator wx:for="{{activityList.data}}" wx:key="name">-->
+<!--					<image mode="widthFix" src="{{item.src}}"></image>-->
+<!--				</navigator>-->
+<!--			</view>-->
+<!--		</view>-->
+	</view>
+
+	<navigator class="banner" url="/pages/join/join">
+		<image mode="widthFix"
+			   src="http://192.168.156.128//group1/M00/00/08/wKicgF8D0ciAN9JLAAAtSG-eLaQ118.jpg"></image>
+	</navigator>
+
+	<view class="bottom">
+		<image src="http://192.168.156.128//group1/M00/00/08/wKicgF8G4eOAGFPiAABmCp2B198818.png"
+		mode="widthFix"></image>
 	</view>
 </view>

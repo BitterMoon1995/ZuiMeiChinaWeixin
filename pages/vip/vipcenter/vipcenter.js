@@ -9,13 +9,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-        canIUse: true,
         openid: '',
+
+        //控制页面显示
+        isNotUser: false,
+        isUser: false,
+
+        //数据展示
         remainingDays: 0,
         expirationTime: null,
+
+        //是否是未过期的会员。条件是isUser为true且isExpired未false
+        isExpired: false,
         isVIP: false,
-        isNotVIP: false,
-        isNotActive: false,
+
         vipCard: {
             openid: '',
             phone: '',
@@ -28,81 +35,13 @@ Page({
         }
     },
 
-    getOpenid() {
-        let that = this
-        wx.getStorage(
-            {
-                key: 'openid',
-                success: result => {
-                    that.setData({openid: result.data})
-                }
-            }
-        )
-        return this.data.openid
-    },
-
     /**
      * 生命周期函数--监听页面加载
+     *
+     * 会员制度：    未注册非用户——已注册未充值——已充值已过期——已充值未过期
      */
     onLoad: function (options) {
-        let that = this
-
-        wx.getStorage({
-                key: 'openid',
-                success: result => {
-                    let openid = result.data
-                    that.setData({openid: openid})
-
-                    request({
-                        url: 'http://localhost:2020/vip/vip-card/getVipInfo',
-                        // data: {openid: 'openid'}
-                        data: {openid: openid}
-                    })
-                    .then(res => {
-                        console.log(res.data)
-                        if (res.data==='') {//未注册
-                            that.setData({isNotVIP: true})
-                            return
-                        }
-                        if (res.data.expirationTime==null) {//未充值过
-                            that.setData({
-                                isNotActive: true,
-                                remainingDays: 0,
-                                expirationTime: '已过期',
-                                isVIP:true
-                            })
-                            return
-                        }
-                        let expirationTime = res.data.expirationTime.slice(0,10)
-                        that.getRemainingTime(expirationTime)
-                        if (that.data.remainingDays<=0) {//充值过但过期了
-                            that.setData({
-                                isNotActive: true,
-                                remainingDays: 0,
-                                expirationTime: '已过期'
-                            })
-                        }
-
-                        that.setData({isVIP:true})
-                    })
-                }
-            })
-    },
-
-    getRemainingTime(expirationTime) {
-        let expTime = new Date(expirationTime)
-        let expTimeTS = expTime.getTime()//毫秒，一天有86400000毫秒
-
-        let currentTime = new Date()
-        let currentTimeTS=currentTime.getTime()
-
-        let remainingDays = (expTimeTS - currentTimeTS) / 86400000
-        let result = remainingDays.toFixed(0)
-
-        this.setData({
-            expirationTime:expirationTime,
-            remainingDays:result
-        })
+        app.getVipInfo(this)
     },
 
     /**

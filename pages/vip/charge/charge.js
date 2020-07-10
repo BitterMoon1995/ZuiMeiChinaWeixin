@@ -16,7 +16,7 @@ Page({
 
         timer: null,
 
-        isOK: true,
+        isOK: false,
         isWrong: false,
 
         iconSize: [20, 30, 40, 50, 60, 70],
@@ -32,12 +32,22 @@ Page({
 
         if (e.detail.value.length === 8) {
             let pmCode = e.detail.value
+
+            this.setData({
+                promoCode:pmCode
+            })
+
             this.data.promoCode = pmCode
             let openid = this.getOpenid()
             console.log(openid)
             this.timer = setInterval(function () {
                 that.verifyCode(openid, pmCode)
-            }, 2000)
+            }, 1000)
+        }
+        else {
+            this.setData({
+                isOK: false
+            })
         }
     },
     verifyCode(openid,pmCode) {
@@ -53,9 +63,34 @@ Page({
         })
         .then(res=>{
             clearTimeout(that.timer)
-            console.log(res.data)
-            if (res.data!==200){
-
+            let code = res.data
+            console.log(code)
+            if (code===200){
+                that.setData({
+                    isOK: true
+                })
+            }
+            else if (code===400){
+                wx.showToast({
+                    title: '找不到该会员',
+                    icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                    duration: 2000
+                })
+            }
+            //推荐自己
+            else if (code===415){
+                wx.showToast({
+                    title: '无效推荐码',
+                    icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                    duration: 2000
+                })
+            }
+            else if (code===416){
+                wx.showToast({
+                    title: '非会员用户',
+                    icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                    duration: 2000
+                })
             }
         })
     },

@@ -17,9 +17,6 @@
   padding-left: 20rpx;
   display: inline-block;
   width: 350rpx;
-  /* border: 1px solid #ccc; */
-  line-height: 80rpx;
-  vertical-align: middle;
   color: black;
   border: #01B0F1 2px solid;
   border-radius: 20px;

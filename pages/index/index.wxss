@@ -1,3 +1,10 @@
+.page {
+  height: 3000rpx;
+}
+.sliders {
+  margin-top: 0;
+  margin-bottom: 60rpx;
+}
 .sliders swiper {
   width: 100%;
   height: calc(100vw*280/750);
@@ -5,18 +12,11 @@
 .sliders swiper image {
   width: 100%;
 }
-.categories {
-  overflow: hidden;
+.banner {
+  margin-top: 30rpx;
 }
-.categories navigator {
-  margin-top: 15rpx;
-  float: left;
-  width: 20%;
-  padding: 5rpx,160rpx;
-  text-align: center;
-}
-.categories navigator image {
-  width: 61%;
+.banner image {
+  width: 100%;
 }
 .floorText {
   position: relative;
@@ -27,6 +27,7 @@
   position: absolute;
   left: 15rpx;
   font-weight: bold;
+  font-size: 36rpx;
 }
 .floorText :nth-child(2) {
   position: absolute;
@@ -34,11 +35,47 @@
 }
 .floorImgs {
   display: flex;
+  flex-wrap: wrap;
 }
 .floorImgs navigator {
-  flex: 1;
+  position: relative;
+  width: 375rpx;
   padding: 5rpx;
 }
 .floorImgs navigator image {
   width: 100%;
 }
+.floorImgs navigator .name {
+  font-size: 38rpx;
+  font-family: STXingkai;
+  color: white;
+  position: absolute;
+  left: 0;
+  bottom: 35rpx;
+}
+.floorImgs navigator .slogan {
+  margin: 0;
+  padding: 0;
+  font-size: 31rpx;
+  font-family: KaiTi;
+  color: white;
+  position: absolute;
+  left: 0;
+  bottom: 10rpx;
+}
+.floorImgs navigator:nth-child(-n+2) {
+  padding-bottom: 0;
+}
+.floorImgs navigator:nth-child(n+3) {
+  padding-top: 0;
+}
+.bottom {
+  margin-top: 60rpx;
+  margin-bottom: 0rpx;
+  display: flex;
+  justify-content: center;
+}
+.bottom image {
+  width: 70%;
+}
+/*# sourceMappingURL=index.wxss.map */

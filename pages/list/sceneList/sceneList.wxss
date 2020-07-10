@@ -1,32 +1,50 @@
 page {
+  margin-top: 40rpx;
   padding: 20rpx;
 }
 .scene {
-  height: 200rpx;
-  border-bottom: 1px solid #01B0F1;
+  height: 220rpx;
+  border-bottom: 1px solid gray;
   position: relative;
   margin-bottom: 10rpx;
 }
 .scene image {
   position: absolute;
   left: 0;
-  top: 0;
-  width: 300rpx;
-  height: 100rpx;
+  top: 0rpx;
+  width: 320rpx;
 }
 .scene .name {
+  width: 300rpx;
+  font-size: 37rpx;
+  font-family: STXingkai;
   position: absolute;
-  right: 157rpx;
+  right: 57rpx;
+  top: 15rpx;
+}
+.scene .level {
+  font-size: 28rpx;
+  color: red;
+  position: absolute;
+  right: 18rpx;
   top: 5rpx;
 }
-.scene .slogan {
+.scene .price {
   font-size: 28rpx;
-  color: gray;
-  height: 150rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 37rpx;
+}
+.scene .slogan {
+  font-size: 31rpx;
+  font-family: KaiTi;
+  color: dimgray;
+  height: 130rpx;
   width: 400rpx;
   position: absolute;
-  right: -10rpx;
-  top: 60rpx;
+  padding-left: 30rpx;
+  right: 0rpx;
+  top: 80rpx;
 }
 .nigger {
   display: none;

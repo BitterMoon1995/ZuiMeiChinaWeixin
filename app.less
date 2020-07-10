@@ -9,6 +9,7 @@ page{
   --themeColor:#01B0F1;
   font-size:32rpx;
 }
+//横线
 .line{
   width: 100%;
   margin: 10px auto;
@@ -16,25 +17,30 @@ page{
 }
 
 .search_row{
-  height: 45rpx;
+  width: 500rpx;
+  height: 50rpx;
   display: flex;
+  align-items: center;
   input{
+    width: 300rpx;
     flex: 4;
     height: 100%;
-    background-color: #F6F6F6;
+    background-color: white;
     padding-left: 20rpx;//调整字体向右偏移
     margin-right: 10rpx;
+    border: #01B0F1 1px solid;
     border-radius: 20rpx;
   }
   button{
     flex: 1;
     height: 100%;
     padding: 0;
-    background-color: #F6F6F6;
+    background-image: linear-gradient(to right, #89f7fe , #66a6ff);
 
     border-radius: 20rpx;
 
     font-size: 28rpx;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,4 +64,58 @@ page{
 .container{
   padding: 20rpx;
   overflow: hidden;
+}
+//数据展示
+.dataDisplay{
+  margin-bottom: 30rpx;
+}
+//单行按钮
+.singleLineButton{
+  text-align: center;
+  border-radius: 30rpx;
+  margin-bottom: 30rpx;
+  background-image: linear-gradient(to bottom, #a8edea , #fed6e3);
+  color: white;
+}
+//单行按钮
+.singleLineButton2{
+  text-align: center;
+  border-radius: 30rpx;
+  margin-bottom: 30rpx;
+  background-image: linear-gradient(to right, #84fab0 , #8fd3f4);
+  color: white;
+}
+//输入框
+.inputCt{
+  margin-bottom: 30rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  input{
+    display: inline-block;
+    width: 50%;
+    padding-left: 20rpx;
+
+    border: #01B0F1 2px solid;
+    border-radius: 20px;
+
+  }
+}
+//注意事项
+.notice{
+  display: block;
+  margin-top: 300rpx;
+}
+
+.block-img{
+  margin-top: 30rpx;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  //图片
+  .pic {
+    float:left;
+    position:relative;
+  }
 }
