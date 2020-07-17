@@ -111,6 +111,27 @@
 					"id": -1,
 					"name": "pages/list/sceneList/sceneList",
 					"pathName": "pages/list/sceneList/sceneList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cart/cart",
+					"pathName": "pages/cart/cart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/join",
+					"pathName": "pages/join/join",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/scene/YuewangTower/YuewangTower",
+					"pathName": "pages/scene/YuewangTower/YuewangTower",
 					"scene": null
 				}
 			]

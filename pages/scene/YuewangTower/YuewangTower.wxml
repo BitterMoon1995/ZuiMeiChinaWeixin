@@ -1,0 +1,13 @@
+<navigationBar></navigationBar>
+
+<swiper autoplay indicator-dots circular interval="2500">
+    <swiper-item wx:for="{{introList}}" wx:key="id">
+        <image src="{{item.src}}" mode="widthFix"></image>
+    </swiper-item>
+</swiper>
+<view class="line"></view>
+
+<button bind:tap="zhiNa">蒸馏啊</button>
+<view class="richText">
+    <image src="{{richText.src}}" mode="widthFix"></image>
+</view>

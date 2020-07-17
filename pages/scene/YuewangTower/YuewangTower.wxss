@@ -1,0 +1,14 @@
+swiper {
+  width: 100%;
+  height: calc(100vw*595/1594);
+}
+swiper image {
+  width: 100%;
+}
+.richText {
+  width: 100%;
+}
+.richText image {
+  width: 100%;
+}
+/*# sourceMappingURL=YuewangTower.wxss.map */

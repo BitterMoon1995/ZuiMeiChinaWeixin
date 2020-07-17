@@ -2,5 +2,5 @@
   "usingComponents": {
     "search": "../../components/search/search"
   },
-  "navigationStyle": "custom"
+  "navigationBarTextStyle": "white"
 }

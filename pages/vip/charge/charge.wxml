@@ -1,3 +1,4 @@
+<navigationBar></navigationBar>
 <view class="container">
     <text>1年365元</text>
     <view class="lineHeight">

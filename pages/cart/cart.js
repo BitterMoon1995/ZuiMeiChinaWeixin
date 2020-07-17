@@ -8,6 +8,9 @@ Page({
 
   },
 
+  nigger() {
+    console.log('niggerrrrrrrrrrrrrrrrrrrrr')
+  },
   /**
    * 生命周期函数--监听页面加载
    */

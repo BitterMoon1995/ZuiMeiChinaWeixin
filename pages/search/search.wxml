@@ -1,18 +1,43 @@
 <view class="container">
-<view class="search_row">
-    <input value="{{condition}}" placeholder="请输入您感兴趣的内容" bind:input="handleInput"></input>
-    <button bind:tap="search" size="default" type="">搜索
-<!--        <view class="icon-box">-->
-<!--            <view class="icon-small-wrp">-->
-<!--                <icon class="icon-small" type="search" size="20"></icon>-->
-<!--            </view>-->
-<!--        </view>-->
-    </button>
-</view>
-<view class="search_content">
-    <navigator class="search_item" wx:for="{{resultList}}"
-               wx:key="name" url="{{item.url}}" style="font-size: 35rpx">
-        {{item.name}} {{item.slogan}}
-    </navigator>
-</view>
+
+    <view class="search_row">
+        <input value="{{condition}}" placeholder="您感兴趣的内容" bind:input="handleInput" focus>
+        </input>
+        <view class="cleanIcon" catch:tap="clear" wx:if="{{cleanIcon}}">
+            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8Oo8OAQcrnAAAhii_SMdU517.png"
+            mode="widthFix"></image>
+        </view>
+        <button bind:tap="search" style="width: 150rpx">
+            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8OhRGAXfttAAAaE5citSI888.png"
+                   mode="widthFix"></image>
+        </button>
+    </view>
+    <view class="blank"></view>
+    <view class="line"></view>
+
+    <view class="search_content" wx:if="{{hadResults}}">
+        <navigator class="search_item" wx:for="{{resultList}}"
+                   wx:key="name" url="{{item.url}}" style="font-size: 35rpx">
+            {{item.name}} {{item.slogan}}
+        </navigator>
+    </view>
+
+    <view wx:if="{{clear}}">
+        <text class="hot-text">热门搜索</text>
+        <view class="hot">
+            <view class="hots" wx:for="{{hotList}}" wx:key="id"
+                  bind:tap="search" data-content="{{item.content}}">{{item.content}}
+            </view>
+        </view>
+
+        <text class="hot-text">最近搜索</text>
+        <view class="hot">
+            <view class="hots" wx:for="{{recentList}}" wx:key="searcher"
+                  bind:tap="search" data-content="{{item.content}}">{{item.content}}
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{noResults}}" class="noResults">无结果</view>
+
 </view>

@@ -1,0 +1,49 @@
+.navbar {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  /*
+  什么是高度塌陷？
+  什么情况会导致高度塌陷？
+    1.子元素绝对定位 position：absolute  绝对定位的元素完全从文档流当中移走，所以他们的尺寸无法影响到父元素的尺寸
+                                      （一般这种父元素都会嗯设置一个高度）
+    2.元素固定定位 position：fixed    导致该元素失去高度，其后所有元素都会上移相应的高度（此处采用空白view占用法）
+    3.子元素浮动float    导致子元素完全脱离文档流，父元素失去高度（这种花样就多了至少3种）
+   */
+  /*
+  如何解决高度塌陷？
+    重开北欧                            ————>     https://www.jianshu.com/p/641a72e5fc5f
+   */
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.title-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.capsule {
+  height: 40px;
+  position: relative;
+}
+.capsule > view {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 10px;
+}
+.capsule .back {
+  left: 20rpx;
+}
+.capsule .back image {
+  width: 100%;
+}
+.capsule .home {
+  left: 100rpx;
+}
+.capsule .home image {
+  width: 100%;
+}
+/*# sourceMappingURL=navigationBar.wxss.map */

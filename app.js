@@ -51,6 +51,13 @@ App({
                 }
             }
         })
+        //获取当前手机状态栏的高度
+        wx.getSystemInfo({
+            success(res){
+                console.log(res)
+                that.globalData.statusBarHeight = res.statusBarHeight
+            }
+        })
     },
 
     getOpenid: function () {
@@ -59,7 +66,6 @@ App({
     },
     //接收调用者的引用(调用的那个页面)作为参数
     getVipInfo(invoker) {
-        console.log('我运行了')
         let me = this
 
         wx.getStorage({
@@ -75,7 +81,6 @@ App({
                 })
                 .then(res => {
                     let expTime = res.data.expirationTime
-                    console.log(expTime.toString().slice(0,4))
                     //  未注册
                     if (res.data === '') {
                         invoker.setData({isNotUser: true})
@@ -131,7 +136,8 @@ App({
     },
     globalData: {
         userInfo: null,
-        openid: ''
+        openid: '',
+        statusBarHeight: 0
     },
 
     //返回上一页，参数为当前页面

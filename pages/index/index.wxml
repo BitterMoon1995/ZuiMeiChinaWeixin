@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="yougou_index">
+<view>
 
 	<view class="sliders">
 		<swiper autoplay indicator-dots circular interval="2500">
@@ -11,9 +11,12 @@
 		</swiper>
 	</view>
 
-	<view>嘻嘻</view>
+	<view class="search" >
+<!--		老话说，含tabbar页面不能用navigate跳转，唯一跳转方式是wx.switchTab-->
+		<navigator bind:tap="toSearch">感兴趣的景区、线路、旅游活动</navigator>
+	</view>
 
-<!--	<view class="categories">-->
+	<!--	<view class="categories">-->
 <!--		<navigator wx:for="{{catesList.data}}" wx:key="src" url="{{item.url}}">-->
 <!--			<image mode="widthFix" src="{{item.src}}"></image>-->
 <!--		</navigator>-->
@@ -25,13 +28,13 @@
 
 	<view>
 		<view class="floor">
-			<view class="floorText">
-				<navigator>盛·景</navigator>
-				<navigator url="/pages/list/sceneList/sceneList">更多</navigator>
-			</view>
+			<navigator class="floorText" url="/pages/list/sceneList/sceneList">
+				<view>盛·景</view>
+				<view>更多</view>
+			</navigator>
 			<view class="floorImgs">
 				<navigator wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
-					<image mode="widthFix" src="{{item.src}}" bind:tap></image>
+					<image mode="widthFix" src="{{item.src}}"></image>
 					<text class="name">{{item.name}}</text>
 					<text class="slogan">{{item.slogan}}</text>
 				</navigator>

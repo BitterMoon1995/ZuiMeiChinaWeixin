@@ -1,23 +1,31 @@
-<view class="search_row">
-    <input value="{{condition}}" placeholder="您感兴趣的景区" bind:input="handleInput" ></input>
-    <button bind:tap="search">搜索</button>
-</view>
-<view class="line"></view>
+<navigationBar></navigationBar>
+<view class="container">
+    <view class="search_row">
+        <input value="{{condition}}" placeholder="您感兴趣的内容" bind:input="handleInput" focus="{{getFocus}}">
+        </input>
+        <button bind:tap="search" style="width: 150rpx">
+            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8OhRGAXfttAAAaE5citSI888.png"
+                   mode="widthFix"></image>
+        </button>
+    </view>
+    <view class="blank" style="height: 80rpx;background-color: white"></view>
+    <!--    <view class="line"></view>-->
 
-<view class="{{showScenes === true ? 'scenes' : 'nigger'}}">
-    <navigator class="scene" wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
-        <image src="{{item.src}}" mode="widthFix"></image>
-        <text class="name">{{item.name}}</text>
-        <text class="level">{{item.level}}</text>
-        <text class="price">{{item.price}}￥</text>
-        <text class="slogan">{{item.slogan}}</text>
-    </navigator>
-</view>
+    <view class="{{showScenes === true ? 'scenes' : 'nigger'}}">
+        <navigator class="scene" wx:for="{{sceneList}}" wx:key="name" url="{{item.url}}">
+            <image src="{{item.src}}" mode="widthFix"></image>
+            <text class="name">{{item.name}}</text>
+            <text class="level">{{item.level}}</text>
+            <text class="price">{{item.price}}￥</text>
+            <text class="slogan">{{item.slogan}}</text>
+        </navigator>
+    </view>
 
-<view class="{{showScenes === true ? 'nigger' : 'search_item'}}">
-    <navigator class="search_item" wx:for="{{resultList}}"
-               wx:key="name" url="{{item.url}}">
-        {{item.name}} {{item.slogan}}
-    </navigator>
+    <view class="{{showScenes === true ? 'nigger' : 'search_item'}}">
+        <navigator class="search_item" wx:for="{{resultList}}"
+                   wx:key="name" url="{{item.url}}">
+            {{item.name}} {{item.slogan}}
+        </navigator>
+    </view>
+    <tabbar wx:if="{{isScrollUp}}"></tabbar>
 </view>
-<tabbar></tabbar>

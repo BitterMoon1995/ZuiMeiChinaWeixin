@@ -1,0 +1,22 @@
+<view class="navbar" style="{{'height: ' + navigationBarHeight}}">
+<!--    胶囊到顶边的区域-->
+    <view style="{{'height: ' + statusBarHeight}}" class="top"></view>
+    <view class='capsule'>
+        <view bindtap='back' class="back">
+            <image src='http://192.168.156.128//group1/M00/00/08/wKicgF8MHACAA8r5AAAOGMsS4Qg369.png'
+                   mode="widthFix"></image>
+        </view>
+        <view bindtap='backHome' class="home">
+            <image src='http://192.168.156.128//group1/M00/00/08/wKicgF8MG7CAQABbAAALmKSxct4011.png'
+                   mode="widthFix"></image>
+        </view>
+    </view>
+</view>
+<!--        这里有个需注意的问题，就是一般会出现自定义导航栏，下拉页面，导航栏也随着会下拉，-->
+<!--        这种问题是因为设置fixed后页面元素整体上移了navigationBarHeight，-->
+<!--        所以在此组件里设置一个空白view元素占用最上面的navigationBarHeight这块高度-->
+<view style="{{'height: ' + navigationBarHeight}};background: white;"></view>
+
+
+
+

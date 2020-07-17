@@ -42,6 +42,12 @@ Page({
      */
     onLoad: function (options) {
         app.getVipInfo(this)
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+            console.log(this.getTabBar().data.selected)
+            this.getTabBar().setData({
+                selected: 0
+            })
+        }
     },
 
     /**
@@ -54,7 +60,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+            console.log(this.getTabBar().data.selected)
+            this.getTabBar().setData({
+                selected: 2
+            })
+        }
     },
 
     /**
@@ -92,3 +103,15 @@ Page({
 
     }
 })
+// Component({
+//     pageLifetimes: {
+//         show() {
+//             if (typeof this.getTabBar === 'function' &&
+//                 this.getTabBar()) {
+//                 this.getTabBar().setData({
+//                     selected: 0
+//                 })
+//             }
+//         }
+//     }
+// })

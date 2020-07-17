@@ -15,39 +15,86 @@ page{
   margin: 10px auto;
   border-top:1px black solid;
 }
-
 .search_row{
-  width: 500rpx;
-  height: 50rpx;
+  margin-top: 10rpx;
+  padding-top: 0;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+
+  background-color: white;
+  z-index: 100;
+
+  width: 100%;
+  height: 78rpx;
+
+  position: fixed;
+
   display: flex;
+  justify-content: space-around;
   align-items: center;
   input{
-    width: 300rpx;
-    flex: 4;
-    height: 100%;
-    background-color: white;
+    width: 500rpx;
+    height: 50rpx;
     padding-left: 20rpx;//调整字体向右偏移
     margin-right: 10rpx;
-    border: #01B0F1 1px solid;
+
+    background-color: white;
+    border: #01B0F1 2px solid;
     border-radius: 20rpx;
+
   }
-  button{
-    flex: 1;
-    height: 100%;
-    padding: 0;
-    background-image: linear-gradient(to right, #89f7fe , #66a6ff);
+  //删除小图标
+  .cleanIcon{
+    position: absolute;
+    right: 225rpx;
+    height: 50rpx;
+    width: 50rpx;
 
-    border-radius: 20rpx;
-
-    font-size: 28rpx;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /*
+        一个极小的细节(指卡了两个小时)
+        1.什么是z-index？
+          z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+          不会影响子向父事件冒泡
+          周神：但是可以影响兄弟元素的事件顺序★★★
+        2.此处作用：优先触发cleanIcon而非input的点击事件，否则cleanIcon永远别想被点击了
+     */
+    z-index: 101;
+    image{
+      width: 70%;
+    }
+  }
+  button{
+    width: 10rpx;
+    height: 57rpx;
+    padding: 0;
+    margin-right: 20rpx!important;
+
+    background-image: linear-gradient(to right, #89f7fe , #66a6ff);
+    border-radius: 30rpx;
+
+    font-size: 29rpx;
+    color: white;
+    //让button中的文字水平、垂直都居中，有哪几种方法？
+
+    //法一
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //法二
+    //text-align: center;//水平
+    //line-height: 54rpx;
+
+    image{
+      width: 30%;
+    }
   }
 }
 .search_content{
-  margin-top: 30rpx;
   .search_item{
     background-color: white;
 
@@ -62,7 +109,13 @@ page{
 }
 //所有页面都得有个内边距
 .container{
-  padding: 20rpx;
+  width: 100%;
+  margin-bottom: 100rpx;
+  padding: 0rpx 10rpx 10rpx;
+
+  background-color: white;
+
+  box-sizing: border-box;
   overflow: hidden;
 }
 //数据展示

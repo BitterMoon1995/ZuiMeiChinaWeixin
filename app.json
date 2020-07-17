@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/category/category",
     "pages/my/my",
     "pages/cart/cart",
     "pages/search/search",
@@ -15,43 +14,48 @@
     "pages/vip/edit/edit",
     "pages/vip/profit/profit",
 
-    "pages/scene/test1/test1"
-
+    "pages/scene/test1/test1",
+    "pages/scene/YuewangTower/YuewangTower"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "微信接口功能演示",
-    "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "custom": true,
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "color": "#000000",
-    "selectedColor": "#000000",
-    "backgroundColor": "#000000",
+    "selectedColor": "#3cc51f",
     "list": [
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索"
+      },
+      {
+        "pagePath": "pages/vip/vipcenter/vipcenter",
+        "text": "会员"
+      },
       {
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "pagePath": "pages/vip/vipcenter/vipcenter",
-        "text": "会员中心"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "打卡"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "text": "优购"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "text": "我的"
+        "pagePath": "pages/index/index",
+        "text": "返回"
       }
     ]
+  },
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.6",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

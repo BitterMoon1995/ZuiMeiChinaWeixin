@@ -1,1 +1,11 @@
-/* pages/join/join.wxss */
+.poster {
+  position: relative;
+  height: 1200rpx;
+}
+.poster image {
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+/*# sourceMappingURL=join.wxss.map */

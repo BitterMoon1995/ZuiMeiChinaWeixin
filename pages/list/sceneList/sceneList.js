@@ -1,7 +1,9 @@
 import {
     request
 } from "../../../request/index"
+
 let app = getApp()
+let r = 1
 
 Page({
 
@@ -12,32 +14,36 @@ Page({
         showScenes: true,
         sceneList: [],
 
-        condition:'',
-        resultList: []
+        condition: '',
+        resultList: [],
+
+        //用户是否在上滑？
+        isScrollUp: false,
+
+        getFocus: false
     },
 
     getShowList() {
         request({
             url: 'http://localhost:2020/mini/scene/showList'
         })
-        .then(result => {
-            console.log(result)
-            this.setData({
-                sceneList: result.data
+            .then(result => {
+                this.setData({
+                    sceneList: result.data
+                })
             })
-        })
     },
 
     handleInput(e) {
-        if (e.detail.value!=='')
-        this.setData({
-            showScenes: false,
-            condition: e.detail.value
-        })
+        if (e.detail.value !== '')
+            this.setData({
+                showScenes: false,
+                condition: e.detail.value
+            })
         else
-        this.setData({
-            showScenes: true
-        })
+            this.setData({
+                showScenes: true
+            })
     },
 
     search() {
@@ -48,14 +54,14 @@ Page({
                 condition: this.data.condition
             }
         })
-        .then(result => {
-            this.setData({
-                resultList: result.data
+            .then(result => {
+                this.setData({
+                    resultList: result.data
+                })
             })
-        })
     },
 
-    return(){
+    return() {
         app.return(getCurrentPages())
     },
 
@@ -77,7 +83,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.setData({
+            getFocus: true
+        })
     },
 
     /**
@@ -93,19 +101,39 @@ Page({
     onUnload: function () {
 
     },
+    /*
+    社会主义建设之：列表页静止没有tabbar，但是用户上滑时会出现★★
 
+    监听用户滑动，得到【滚动条相对于页面顶部的偏移量，单位为px】
+    再用一个全局变量暂存，不能是方法变量！
+    当本次偏移量大于上次的偏移量，说明用户在下滑，滑了！！！
+     */
+    onPageScroll: function(e) {
+        let that = this
+        if (e.scrollTop > r) {
+            that.setData({
+                isScrollUp : true
+            })
+        }
+        else {
+            that.setData({
+                isScrollUp : false
+            })
+        }
+        //蒸馏啊！！！！！！！！！！！！！！！！！！！！！！
+        r = e.scrollTop
+
+    },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**
