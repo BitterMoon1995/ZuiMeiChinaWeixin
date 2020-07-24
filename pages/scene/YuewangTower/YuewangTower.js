@@ -1,4 +1,5 @@
 import {request} from "../../../request/index.js";
+import {scrollHandle} from "../../../utils/scrollHandle"
 
 Page({
     data: {
@@ -8,8 +9,11 @@ Page({
         name: '',
         location: '',
         price: '',
+        level: '',
         longitude: '',//经度
         latitude: '',//纬度
+
+        isScrollUp:false
     },
     onLoad: function (options) {
         console.log(options.id)
@@ -23,6 +27,7 @@ Page({
         })
             .then(result => {
                 let Glenn = result.data
+                console.log(Glenn)
                 this.setData({
                     introList: Glenn.introImgs,
                     richText: Glenn.richText,
@@ -30,12 +35,13 @@ Page({
                     location: Glenn.location,
                     price: Glenn.price,
                     longitude: Glenn.longitude,//经度
-                    latitude: Glenn.latitude
+                    latitude: Glenn.latitude,
+                    level: Glenn.level
                 })
             })
     },
 
-    zhiNa(){
+    routePlaning(){
         const latitude = this.data.latitude
         const longitude = this.data.longitude
         const name = this.data.name
@@ -50,5 +56,9 @@ Page({
         wx.navigateTo({
             url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
         });
-    }
+    },
+
+    onPageScroll: function(e) {
+        scrollHandle(e,this)
+    },
 });

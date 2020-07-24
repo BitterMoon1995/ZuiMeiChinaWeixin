@@ -16,9 +16,9 @@
         </view>
 
         <!-- 用来提示用户上传图片 -->
-        <button class="singleLineButton" style="width: 250rpx" bindtap="chooseImg"
+        <button class="photoBtn" bindtap="chooseImg"
                 type='primary' wx:if="{{!show}}">拍照/相册</button>
     </view>
-    <button bind:tap="submit" class="singleLineButton2" style="width: 250rpx">确认修改</button>
+    <button bind:tap="submit" class="confirmBtn">确认修改</button>
     <view class="tips">*您可按需修改，并不要求全部填写</view>
 </view>

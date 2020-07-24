@@ -32,6 +32,8 @@ Page({
 		// this.getRouteList()
 		// this.getActivityList()
 
+
+
 	},
 	getSwiperList() {
 		request({
@@ -93,7 +95,6 @@ Page({
 	onShow: function () {
 		//getTabBar：返回当前页面的custom-tab-bar的组件实例
 		if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-			console.log(this.getTabBar().data.selected)
 			this.getTabBar().setData({
 				selected: 1
 			})

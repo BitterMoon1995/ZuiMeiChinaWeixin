@@ -75,8 +75,13 @@ Page({
               content: '抱歉，一天之内最多修改一次',
               showCancel: false,
               success (res) {
-                wx.redirectTo({
-                  url: '/pages/vip/vipcenter/vipcenter'
+                wx.switchTab({
+                  url: '/pages/vip/vipcenter/vipcenter',
+                  success: res1 => {
+                    let page = getCurrentPages().pop();
+                    if (page === undefined || page == null) return;
+                    page.onLoad();
+                  }
                 })
               }
             })

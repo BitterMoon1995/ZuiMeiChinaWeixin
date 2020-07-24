@@ -112,8 +112,13 @@ Page({
                             content: '感谢您成为卓行的尊贵用户！',
                             showCancel: false,
                             success(res) {
-                                wx.redirectTo({
-                                    url: '/pages/vip/vipcenter/vipcenter'
+                                wx.switchTab({
+                                    url: '/pages/vip/vipcenter/vipcenter',
+                                    success: res1 => {
+                                        let page = getCurrentPages().pop();
+                                        if (page === undefined || page == null) return;
+                                        page.onLoad();
+                                    }
                                 })
                             }
                         })

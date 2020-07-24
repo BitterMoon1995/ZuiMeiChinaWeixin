@@ -1,3 +1,6 @@
+.container {
+  margin-top: 100rpx;
+}
 .cardContainer {
   height: 500rpx;
   position: relative;
@@ -28,5 +31,8 @@
 }
 .isVIP {
   margin-top: 50rpx;
+}
+button {
+  margin-top: 40rpx;
 }
 /*# sourceMappingURL=vipcenter.wxss.map */

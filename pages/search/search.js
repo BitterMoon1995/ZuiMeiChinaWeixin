@@ -74,16 +74,17 @@ Page({
             }
         })
         .then(result => {
-            console.log(content)
-            console.log(result.data)
             //根据搜索结果判断页面状态。无搜索结果，则页面显示 无结果态
             if (result.data.length === 0) {
+                console.log('无结果')
                 this.setData({
+                    cleanIcon: true,
                     hadResults: false,
                     clear: false,
                     noResults: true
                 })
             } else {//否则展示搜索结果
+                console.log('有结果')
                 this.setData({
                     cleanIcon: true,
                     hadResults: true,

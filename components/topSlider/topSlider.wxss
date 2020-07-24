@@ -1,0 +1,12 @@
+.sliderCtn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  position: fixed;
+  right: 30rpx;
+  bottom: 150rpx;
+}
+.sliderCtn image {
+  width: 100%;
+}
+/*# sourceMappingURL=topSlider.wxss.map */

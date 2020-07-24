@@ -18,13 +18,10 @@
         <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
 </view>
-<view class="isNotVIP" wx:if="{{isNotUser}}">
+<view class="notRegister" wx:if="{{isNotUser}}">
     <view>您还未注册</view>
-    <button>
+    <button class="normalBtn" style="margin-top: 100rpx">
         <navigator url="/pages/vip/register/register">用户注册</navigator>
-    </button>
-    <button>
-        <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
 </view>
 </view>

@@ -16,8 +16,11 @@ Page({
 
         timer: null,
 
+        //推荐码校验
         isOK: false,
-        isWrong: false,
+
+        //推荐码输入框控制
+        noCharged: true,
 
         iconSize: [20, 30, 40, 50, 60, 70],
         iconColor: [
@@ -39,7 +42,6 @@ Page({
 
             this.data.promoCode = pmCode
             let openid = this.getOpenid()
-            console.log(openid)
             this.timer = setInterval(function () {
                 that.verifyCode(openid, pmCode)
             }, 1000)
@@ -81,14 +83,14 @@ Page({
             else if (code===415){
                 wx.showToast({
                     title: '无效推荐码',
-                    icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                    icon: 'none',
                     duration: 2000
                 })
             }
             else if (code===416){
                 wx.showToast({
                     title: '非会员用户',
-                    icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                    icon: 'none',
                     duration: 2000
                 })
             }
@@ -130,8 +132,13 @@ Page({
                         header: {'content-type': 'application/x-www-form-urlencoded'}
                     })
                     .then(res=>{
-                        wx.redirectTo({
-                            url: '/pages/vip/vipcenter/vipcenter'
+                        wx.switchTab({
+                            url: '/pages/vip/vipcenter/vipcenter',
+                            success: res1 => {
+                                let page = getCurrentPages().pop();
+                                if (page === undefined || page == null) return;
+                                page.onLoad();
+                            }
                         })
                     })
                 },
@@ -139,21 +146,28 @@ Page({
                 }
             })
         })
-
-
     },
 
     getOpenid() {
-        let that = this
-        wx.getStorage(
-            {
-                key: 'openid',
-                success: result => {
-                    that.setData({openid:result.data})
+        const id = wx.getStorageSync("openid");
+        this.setData({
+            openid: id
+        })
+    },
+
+    getVipData() {
+        let page = this
+        request({
+            url: 'http://localhost:2020/vip/vip-card/getVipInfo',
+            data: {'openid': this.data.openid}
+        })
+            .then(res=>{
+                if (res.data.charged) {
+                    page.setData({
+                        noCharged:false
+                    })
                 }
-            }
-        )
-        return this.data.openid
+            })
     },
 
     /**
@@ -161,6 +175,7 @@ Page({
      */
     onLoad: function (options) {
         this.getOpenid()
+        this.getVipData()
     },
 
     /**

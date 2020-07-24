@@ -11,4 +11,35 @@ swiper image {
 .richText image {
   width: 100%;
 }
+.baseInfo {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-bottom: 5rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.baseInfo view:nth-child(1) text {
+  color: red;
+  font-weight: bold;
+}
+.oneLine {
+  height: 50rpx;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.oneLine .navBtn {
+  margin-left: 25rpx;
+  width: 57rpx;
+  height: 57rpx;
+}
+.oneLine .navBtn image {
+  width: 100%;
+}
+.sliderCtn {
+  background-color: red;
+  position: fixed;
+  right: 0;
+  bottom: 200rpx;
+}
 /*# sourceMappingURL=YuewangTower.wxss.map */

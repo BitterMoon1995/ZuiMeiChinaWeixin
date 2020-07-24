@@ -30,11 +30,11 @@
         </view>
 
         <!-- 用来提示用户上传图片 -->
-        <button class="singleLineButton" bindtap="chooseImg" type='primary'
-                wx:if="{{!show}}" style="width: 250rpx">
+        <button class="photoBtn" bindtap="chooseImg" type='primary'
+                wx:if="{{!show}}">
             拍照/相册
         </button>
     </view>
 
-    <button bind:tap="upload" class="singleLineButton2" style="width: 250rpx">确认并上传</button>
+    <button bind:tap="upload" class="confirmBtn" style="width: 250rpx" >注册</button>
 </view>

@@ -31,30 +31,25 @@ App({
                 }
             }
         })
-        // 获取用户信息
+        // 获取用户信息。先查看是否授权
         wx.getSetting({
-            success: res => {
+            success (res){
                 if (res.authSetting['scope.userInfo']) {
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                     wx.getUserInfo({
-                        success: res => {
-                            // 可以将 res 发送给后台解码出 unionId
-                            this.globalData.userInfo = res.userInfo
-
-                            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                            // 所以此处加入 callback 以防止这种情况
-                            if (this.userInfoReadyCallback) {
-                                this.userInfoReadyCallback(res)
-                            }
+                        //设置获取的省市区为简体中文
+                        lang:"zh_CN",
+                        success: function(res) {
+                            // console.log(res.rawData)
                         }
                     })
                 }
             }
+            //若未授权，只能通过按钮绑定openType的方式授权
         })
         //获取当前手机状态栏的高度
         wx.getSystemInfo({
             success(res){
-                console.log(res)
                 that.globalData.statusBarHeight = res.statusBarHeight
             }
         })
@@ -81,10 +76,14 @@ App({
                 })
                 .then(res => {
                     let expTime = res.data.expirationTime
-                    //  未注册
-                    if (res.data === '') {
+                    //  未注册。
+                    if (res.data==='') {
                         invoker.setData({isNotUser: true})
                         return
+                    }
+                    //  已注册，会员中心隐藏notRegister！一定要考虑else！！(if else都玩不明白是吧)
+                    else {
+                        invoker.setData({isNotUser: false})
                     }
                     //  未充值过
                     if (expTime.toString().slice(0,4) === '1989') {

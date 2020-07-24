@@ -3,6 +3,7 @@
     <view class="search_row">
         <input value="{{condition}}" placeholder="您感兴趣的内容" bind:input="handleInput" focus>
         </input>
+<!--        清除按钮。不论有无结果，只要搜索了该按钮都显示-->
         <view class="cleanIcon" catch:tap="clear" wx:if="{{cleanIcon}}">
             <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8Oo8OAQcrnAAAhii_SMdU517.png"
             mode="widthFix"></image>

@@ -1,6 +1,6 @@
 .scene {
   height: 220rpx;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid lightgray;
   position: relative;
   margin-bottom: 10rpx;
 }
@@ -20,7 +20,7 @@
 }
 .scene .level {
   font-size: 28rpx;
-  color: #6EB8FE;
+  color: red;
   position: absolute;
   right: 18rpx;
   top: 5rpx;

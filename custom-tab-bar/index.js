@@ -16,11 +16,7 @@ Component({
             {
                 pagePath: "/pages/vip/vipcenter/vipcenter",//绝对路径！！！！！！！！！！！
                 text: "会员卡",
-            },
-            {
-                pagePath: "/pages/index/index",
-                text: "返回",
-            },
+            }
         ]
     },
     attached() {

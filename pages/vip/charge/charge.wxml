@@ -1,7 +1,8 @@
 <navigationBar></navigationBar>
 <view class="container">
     <text>1年365元</text>
-    <view class="lineHeight">
+<!--    充过就不能填推荐码了-->
+    <view class="lineHeight" wx:if="{{noCharged}}">
         推荐码(选填)：
         <input class='input-7' type='text' placeholder='' bind:input="promoCode" maxlength="{{8}}">
         </input>
@@ -10,7 +11,7 @@
         </view>
         <!--    <icon class="icon-box-img" type="warn" size="25"></icon>-->
     </view>
-    <button bind:tap="charge" class="singleLineButton" style="width: 250rpx;">确认充值</button>
+    <button bind:tap="charge" class="confirmBtn" style="margin-top: 220rpx">确认充值</button>
 
     <view class="notice">
         <text style="font-size: 28rpx">

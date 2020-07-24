@@ -7,7 +7,20 @@
 </swiper>
 <view class="line"></view>
 
-<button bind:tap="zhiNa">蒸馏啊</button>
+<view class="baseInfo">
+    <view>票价：{{price}}/人<text>会员全免</text></view>
+    <view>星级：{{level}}</view>
+</view>
+
+<view class="oneLine">
+    <view>导航：{{location}}</view>
+    <view bind:tap="routePlaning" class="navBtn">
+        <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8WqA-AQgikAAAwIjUK0Qc123.png"
+               mode="widthFix"></image>
+    </view>
+</view>
+
 <view class="richText">
     <image src="{{richText.src}}" mode="widthFix"></image>
 </view>
+<topSlider wx:if="{{isScrollUp}}"></topSlider>
