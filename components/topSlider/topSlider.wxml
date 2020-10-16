@@ -1,4 +1,4 @@
 <!--    ctn=container   -->
 <view class="sliderCtn" bind:tap="toTop">
-    <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8YC_-AUhvjAAAYuDvSuKE913.png" mode="widthFix"></image>
+    <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GaYKAZ0ViAAAYuJIF2c4602.png" mode="widthFix"></image>
 </view>

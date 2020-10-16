@@ -15,7 +15,7 @@
 <view class="oneLine">
     <view>导航：{{location}}</view>
     <view bind:tap="routePlaning" class="navBtn">
-        <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8WqA-AQgikAAAwIjUK0Qc123.png"
+        <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GaH2AfdiYAAAwIjaH4J0893.png"
                mode="widthFix"></image>
     </view>
 </view>

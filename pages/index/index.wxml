@@ -23,7 +23,7 @@
 <!--	</view>-->
 	<navigator class="banner" url="/pages/vip/vipcenter/vipcenter" wx:if="{{!isVIP}}">
 		<image mode="widthFix"
-			   src="http://192.168.156.128//group1/M00/00/08/wKicgF8D0aOAQynIAABPFraUlxo108.jpg"></image>
+			   src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZjKABYxcAABPFnGxz8k094.jpg"></image>
 	</navigator>
 
 	<view>
@@ -66,11 +66,11 @@
 
 	<navigator class="banner" url="/pages/join/join">
 		<image mode="widthFix"
-			   src="http://192.168.156.128//group1/M00/00/08/wKicgF8D0ciAN9JLAAAtSG-eLaQ118.jpg"></image>
+			   src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZpmABK_hAAAtSKyZLKg768.jpg"></image>
 	</navigator>
 
 	<view class="bottom">
-		<image src="http://192.168.156.128//group1/M00/00/08/wKicgF8G4eOAGFPiAABmCp2B198818.png"
+		<image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZ1WAdYCKAABmCmaYjYQ512.png"
 		mode="widthFix"></image>
 	</view>
 </view>

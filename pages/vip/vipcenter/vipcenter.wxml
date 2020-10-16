@@ -2,7 +2,7 @@
 <view class="isVIP" wx:if="{{isUser}}">
     <view class="cardContainer">
         <view class="cardImg">
-            <image src="http://192.168.156.128//group1/M00/00/07/wKicgF7791CAad2iAAJK9ZFHzck026.png" mode="widthFix">
+            <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GaAuASpUFAAJK9U8X-_M766.png" mode="widthFix">
             </image>
         </view>
         <view class="expirationTime">{{expirationTime}}</view>

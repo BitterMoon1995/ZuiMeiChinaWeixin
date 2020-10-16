@@ -5,11 +5,11 @@
         </input>
 <!--        清除按钮。不论有无结果，只要搜索了该按钮都显示-->
         <view class="cleanIcon" catch:tap="clear" wx:if="{{cleanIcon}}">
-            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8Oo8OAQcrnAAAhii_SMdU517.png"
+            <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GX36AVpcPAAAhimr9cQM502.png"
             mode="widthFix"></image>
         </view>
         <button bind:tap="search" style="width: 150rpx">
-            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8OhRGAXfttAAAaE5citSI888.png"
+            <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GYUWAUhQIAAAaE85hQ0k576.png"
                    mode="widthFix"></image>
         </button>
     </view>

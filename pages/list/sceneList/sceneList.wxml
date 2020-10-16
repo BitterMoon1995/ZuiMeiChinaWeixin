@@ -4,7 +4,7 @@
         <input value="{{condition}}" placeholder="您感兴趣的内容" bind:input="handleInput" focus="{{getFocus}}">
         </input>
         <button bind:tap="search" style="width: 150rpx">
-            <image src="http://192.168.156.128//group1/M00/00/08/wKicgF8OhRGAXfttAAAaE5citSI888.png"
+            <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GYUWAUhQIAAAaE85hQ0k576.png"
                    mode="widthFix"></image>
         </button>
     </view>
