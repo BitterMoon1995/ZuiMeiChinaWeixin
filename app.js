@@ -1,5 +1,6 @@
 //app.js
-import {request} from "./request/index";
+import {request,server} from "./request/index";
+import {calDays} from "./utils/util"
 
 App({
     onLaunch: function () {
@@ -9,13 +10,18 @@ App({
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
 
-        // 登录
+        // 获取用户openID
         wx.login({
             success(res) {
+                //已经有了就表发请求了！
+                // let openid = wx.getStorageSync("openid");
+                // if (openid!=null){
+                //     return
+                // }
                 if (res.code) {
                     //发起网络请求
                     wx.request({
-                        url: 'http://localhost:2020/vip/vip-card/login',
+                        url: server+'/vip/vip-card/login',
                         data: {
                             code: res.code
                         },
@@ -23,7 +29,12 @@ App({
                             wx.setStorage({
                                 key: "openid", data: res.data.openid
                             })
-                            that.globalData.openid = res.data.openid
+                            wx.setStorage({
+                                key: "vipStatus", data: res.data.vipStatus
+                            })
+                            wx.setStorage({
+                                key: "promoCode", data: res.data.promoCode
+                            })
                         }
                     })
                 } else {
@@ -60,33 +71,44 @@ App({
         return  wx.getStorageSync("openid");
     },
     //接收调用者的引用(调用的那个页面)作为参数
+    /*再写这种屎代码写一次721死一个妈*/
     getVipInfo(invoker) {
-        let me = this
-
         wx.getStorage({
             key: 'openid',
             success: result => {
                 let openid = result.data
+                console.log(openid)
                 invoker.setData({openid: openid})
 
                 request({
-                    url: 'http://localhost:2020/vip/vip-card/getVipInfo',
+                    url: server+'/vip/vip-card/getVipInfo',
                     // data: {openid: 'openid'}
                     data: {openid: openid}
                 })
                 .then(res => {
                     let expTime = res.data.expirationTime
+                    let vipStatus = res.data.vipStatus
                     //  未注册。
                     if (res.data==='') {
                         invoker.setData({isNotUser: true})
+                        wx.setStorage({
+                            key:'vipStatus',data:0
+                        })
                         return
                     }
                     //  已注册，会员中心隐藏notRegister！一定要考虑else！！(if else都玩不明白是吧)
                     else {
-                        invoker.setData({isNotUser: false})
+                        //保存充值状态信息
+                        wx.setStorage({
+                            key:'vipStatus',data:vipStatus
+                        })
+                        invoker.setData({
+                            isNotUser: false,
+                            promoCode: res.data.promoCode
+                        })
                     }
                     //  未充值过
-                    if (expTime.toString().slice(0,4) === '1989') {
+                    if (vipStatus == 1) {
                         invoker.setData({
                             remainingDays: 0,
                             expirationTime: '未充值',
@@ -96,9 +118,7 @@ App({
                         return
                     }
                     //  充值过但过期了
-                    let expirationTime = expTime.slice(0, 10)
-                    me.getRemainingTime(expirationTime,invoker)
-                    if (invoker.data.remainingDays <= 0) {
+                    if (vipStatus == 2) {
                         invoker.setData({
                             remainingDays: 0,
                             expirationTime: '已过期',
@@ -107,11 +127,15 @@ App({
                         })
                         return;
                     }
+                    expTime = expTime.substring(0,10)
+                    let remainingDays = calDays(new Date(expTime))
                     //  充值过且未过期
                     invoker.setData({
                         isVIP: true,
                         isUser: true,
-                        isExpired: false
+                        isExpired: false,
+                        expirationTime: expTime,
+                        remainingDays: remainingDays
                     })
                 })
             }
@@ -133,7 +157,9 @@ App({
             remainingDays: result
         })
     },
+    //垃圾，一律用storage，用这个要遭
     globalData: {
+        vipStatus: 99,
         userInfo: null,
         openid: '',
         statusBarHeight: 0

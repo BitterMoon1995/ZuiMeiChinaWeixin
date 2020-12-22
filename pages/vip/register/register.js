@@ -1,5 +1,5 @@
 import {
-    request
+    request,server
 } from "../../../request/index"
 
 let app = getApp()
@@ -85,14 +85,14 @@ Page({
         }
         //上传图片
         wx.uploadFile({
-            url: 'http://localhost:2020/upload',
+            url: server+'/upload',
             filePath: that.data.photoSrc,
             name: 'file',
             complete(res) {
                 that.data.vipCard.photoSrc = res.data
                 //上传信息
                 request({
-                    url: 'http://localhost:2020/vip/vip-card/save',
+                    url: server+'/vip/vip-card/save',
                     data: {
                         'openid': vipCard.openid,
                         'phone': vipCard.phone,
@@ -106,7 +106,9 @@ Page({
                 })
                 //提示
                 .then(res => {
-                    if (res.data) {
+                    console.log(res.data)
+                    if (res.data.status.code == 200) {
+                        wx.setStorageSync('vipStatus',1)
                         wx.showModal({
                             title: '提示',
                             content: '感谢您成为卓行的尊贵用户！',
@@ -124,7 +126,7 @@ Page({
                         })
                     } else {
                         wx.showToast({
-                            title: '服务器开小差啦',
+                            title: res.data.status.msg,
                             icon: 'none',
                             duration: 2000
                         })

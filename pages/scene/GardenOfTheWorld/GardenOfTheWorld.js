@@ -1,4 +1,4 @@
-import {request,server} from "../../../request/index.js";
+import {request,server} from "../../../request/index";
 import {scrollHandle} from "../../../utils/scrollHandle"
 
 Page({
@@ -23,7 +23,7 @@ Page({
         request({
             url: server+"/mini/scene/getById",
             //每个页面对应一个景区对应一个景区ID
-            data: {Id:"62fee1c0efe40974de662f490257c3fc"}
+            data: {Id:"24e099fd9999fa6797b5537572fb1a0b"}
         })
             .then(result => {
                 let Glenn = result.data
@@ -31,7 +31,7 @@ Page({
                 this.setData({
                     introList: Glenn.introImgs,
                     richText: Glenn.richText,
-                    name: Glenn.name,
+                   name: Glenn.name,
                     location: Glenn.location,
                     price: Glenn.price,
                     longitude: Glenn.longitude,//经度

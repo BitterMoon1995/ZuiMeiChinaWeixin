@@ -1,5 +1,5 @@
 import {
-    request
+    request,server
 } from "../../../request/index"
 
 let app = getApp()
@@ -22,6 +22,8 @@ Page({
         //是否是未过期的会员。条件是isUser为true且isExpired未false
         isExpired: false,
         isVIP: false,
+        vipStatus: 99,
+        promoCode: '',
 
         vipCard: {
             openid: '',
@@ -42,6 +44,8 @@ Page({
      */
     onLoad: function (options) {
         app.getVipInfo(this)
+        app.getRemainingTime(this.data.expirationTime,this)
+
     },
 
     /**

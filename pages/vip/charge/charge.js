@@ -1,5 +1,5 @@
 // pages/vip/charge/charge.js
-import {request} from "../../../request/index"
+import {request,server} from "../../../request/index"
 
 let app = getApp()
 
@@ -52,13 +52,14 @@ Page({
             })
         }
     },
-    verifyCode(openid,pmCode) {
+    verifyCode() {
+        let openid = wx.getStorageSync('openid')
         let that = this
         request({
-            url:"http://localhost:2020/vip/vip-card/verifyPmCode",
+            url: server+"/vip/vip-card/verifyPmCode",
             data:{
                 'openid': openid,
-                'pmCode': pmCode,
+                'pmCode': this.data.promoCode,
             },
             method: 'post',
             header: {'content-type': 'application/x-www-form-urlencoded'}
@@ -99,15 +100,17 @@ Page({
 
     charge(e) {
         let that = this
-        let openid = this.getOpenid()
+        let openid = wx.getStorageSync("openid")+''
         request({
-            url: "http://localhost:2020/vip/vip-card/pay",
+            url: server+"/vip/vip-card/pay",
             data: {
-                openid: openid
+                'openid': openid
             },
-            method: 'POST'
+            method: 'post',
+            header: {'content-type': 'application/x-www-form-urlencoded'}
         })
         .then(res=>{
+            console.log(res)
             let nonceStr = res.data.nonceStr
 
             let p = 'prepay_id='+res.data.packageZ
@@ -120,9 +123,10 @@ Page({
                 signType: 'MD5',
                 paySign: res.data.paySign,
                 success(res) {
+                    console.log(res)
                     let promoCode = that.data.promoCode
                     request({
-                        url:"http://localhost:2020/vip/vip-card/charge",
+                        url: server+"/vip/vip-card/charge",
                         data:{
                             'openid': openid,
                             'nonceStr': nonceStr,
@@ -132,14 +136,19 @@ Page({
                         header: {'content-type': 'application/x-www-form-urlencoded'}
                     })
                     .then(res=>{
-                        wx.switchTab({
-                            url: '/pages/vip/vipcenter/vipcenter',
-                            success: res1 => {
-                                let page = getCurrentPages().pop();
-                                if (page === undefined || page == null) return;
-                                page.onLoad();
-                            }
-                        })
+                        if (res.data.status.code == 200) {
+                            wx.switchTab({
+                                url: '/pages/vip/vipcenter/vipcenter',
+                                success: res1 => {
+                                    let page = getCurrentPages().pop();
+                                    if (page === undefined || page == null) return;
+                                    page.onLoad();
+                                }
+                            })
+                        }
+                        else {
+
+                        }
                     })
                 },
                 fail(res) {
@@ -155,27 +164,16 @@ Page({
         })
     },
 
-    getVipData() {
-        let page = this
-        request({
-            url: 'http://localhost:2020/vip/vip-card/getVipInfo',
-            data: {'openid': this.data.openid}
-        })
-            .then(res=>{
-                if (res.data.charged) {
-                    page.setData({
-                        noCharged:false
-                    })
-                }
-            })
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let vipSta = wx.getStorageSync("vipStatus")
+        if (vipSta == 1){
+            this.setData({noCharged:true})
+        }
+        else this.setData({noCharged:false})
         this.getOpenid()
-        this.getVipData()
     },
 
     /**

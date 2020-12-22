@@ -1,5 +1,5 @@
 import {
-  request
+    request,server
 } from "../../../request/index"
 
 Page({
@@ -40,13 +40,13 @@ Page({
   submit() {
     let that = this
     wx.uploadFile({
-      url: 'http://localhost:2020/upload',
+      url: server+'/upload',
       filePath: that.data.photoSrc,
       name: 'file',
       complete(res) {
         that.setData({photoSrc:res.data})
         request({
-          url:"http://localhost:2020/vip/vip-card/edit",
+          url:"https://www.freetour.top:721/vip/vip-card/edit",
           data:{
             'openid': that.data.openid,
             'phone': that.data.phone,

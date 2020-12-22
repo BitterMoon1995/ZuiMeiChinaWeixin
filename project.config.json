@@ -1,168 +1,169 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
-	"appid": "wxa9e6f1fa364a24ab",
-	"projectname": "%E6%9C%80%E7%BE%8E%E4%B8%AD%E5%9B%BD",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/search/search",
-					"pathName": "pages/search/search",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/list/sceneList/sceneList",
-					"pathName": "pages/list/sceneList/sceneList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vip/vipcenter/vipcenter",
-					"pathName": "pages/vip/vipcenter/vipcenter",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vip/register/register",
-					"pathName": "pages/vip/register/register",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vip/charge/charge",
-					"pathName": "pages/vip/charge/charge",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vip/edit/edit",
-					"pathName": "pages/vip/edit/edit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/vip/profit/profit",
-					"pathName": "pages/vip/profit/profit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/list/sceneList/sceneList",
-					"pathName": "pages/list/sceneList/sceneList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/cart/cart",
-					"pathName": "pages/cart/cart",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/join",
-					"pathName": "pages/join/join",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/scene/YuewangTower/YuewangTower",
-					"pathName": "pages/scene/YuewangTower/YuewangTower",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/scene/YuewangTower/YuewangTower",
-					"pathName": "pages/scene/YuewangTower/YuewangTower",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/scene/YuewangTower/YuewangTower",
-					"pathName": "pages/scene/YuewangTower/YuewangTower",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/scene/YuewangTower/YuewangTower",
-					"pathName": "pages/scene/YuewangTower/YuewangTower",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/scene/YuewangTower/YuewangTower",
-					"pathName": "pages/scene/YuewangTower/YuewangTower",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.4",
+  "appid": "wxa9e6f1fa364a24ab",
+  "projectname": "%E6%9C%80%E7%BE%8E%E4%B8%AD%E5%9B%BD",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/list/sceneList/sceneList",
+          "pathName": "pages/list/sceneList/sceneList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/vipcenter/vipcenter",
+          "pathName": "pages/vip/vipcenter/vipcenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/register/register",
+          "pathName": "pages/vip/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/charge/charge",
+          "pathName": "pages/vip/charge/charge",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/edit/edit",
+          "pathName": "pages/vip/edit/edit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/vip/profit/profit",
+          "pathName": "pages/vip/profit/profit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/list/sceneList/sceneList",
+          "pathName": "pages/list/sceneList/sceneList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/cart/cart",
+          "pathName": "pages/cart/cart",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/join",
+          "pathName": "pages/join/join",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/scene/YuewangTower/YuewangTower",
+          "pathName": "pages/scene/YuewangTower/YuewangTower",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/scene/YuewangTower/YuewangTower",
+          "pathName": "pages/scene/YuewangTower/YuewangTower",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/scene/YuewangTower/YuewangTower",
+          "pathName": "pages/scene/YuewangTower/YuewangTower",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/scene/YuewangTower/YuewangTower",
+          "pathName": "pages/scene/YuewangTower/YuewangTower",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/scene/YuewangTower/YuewangTower",
+          "pathName": "pages/scene/YuewangTower/YuewangTower",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

@@ -1,11 +1,10 @@
 <navigationBar></navigationBar>
 <view class="container">
-    <text>1年365元</text>
+    <text>1年的费用为300元</text>
 <!--    充过就不能填推荐码了-->
     <view class="lineHeight" wx:if="{{noCharged}}">
         推荐码(选填)：
-        <input class='input-7' type='text' placeholder='' bind:input="promoCode" maxlength="{{8}}">
-        </input>
+        <input class='input-7' type='text' bind:input="promoCode" maxlength="{{8}}" bind:blur=""></input>
         <view class="icon-box" wx:if="{{isOK}}">
             <icon class="icon-box-img" type="success" size="50rpx"></icon>
         </view>
@@ -17,7 +16,7 @@
         <text style="font-size: 28rpx">
             用户须知：
             1.填写推荐码的用户可参与年度抽奖，获得免费出国游机会
-            2.您的一级推荐人将享受10元收益，二级1元推荐人将享受1元收益
+            2.您的一级推荐人将享受10元收益，二级推荐人将享受1元收益
             3.推荐人必须是有效会员
             4.推广收益只有每位用户的首次充值有效
         </text>

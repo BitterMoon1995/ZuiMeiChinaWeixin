@@ -1,5 +1,5 @@
 import {
-    request
+    request,server
 } from "../../../request/index"
 
 let app = getApp()
@@ -25,7 +25,7 @@ Page({
 
     getShowList() {
         request({
-            url: 'http://localhost:2020/mini/scene/showList'
+            url: server+'/mini/scene/showList'
         })
             .then(result => {
                 this.setData({
@@ -49,7 +49,7 @@ Page({
     search() {
         if (!this.data.condition.trim()) return
         request({
-            url: 'http://localhost:2020/mini/search/overall',
+            url: server+'/mini/search/overall',
             data: {
                 condition: this.data.condition
             }

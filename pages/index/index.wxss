@@ -51,7 +51,7 @@
   font-family: STXingkai;
   color: white;
   position: absolute;
-  left: 0;
+  left: 3rpx;
   bottom: 190rpx;
 }
 .floorImgs navigator .slogan {
@@ -60,8 +60,8 @@
   font-size: 28rpx;
   color: white;
   position: absolute;
-  left: 0;
-  bottom: 10rpx;
+  left: 10rpx;
+  bottom: 15rpx;
 }
 .floorImgs navigator:nth-child(-n+2) {
   padding-bottom: 0;

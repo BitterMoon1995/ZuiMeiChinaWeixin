@@ -1,6 +1,6 @@
 import {
-    request
-} from "../../request/index.js"
+    request,server
+} from "../../request/index"
 const app = getApp()
 // pages/search/search.js
 Page({
@@ -66,7 +66,7 @@ Page({
     find(content) {
         let openid = wx.getStorageSync("openid")
         request({
-            url: 'http://localhost:2020/mini/search/overall',
+            url: server+'/mini/search/overall',
             //搜索字段为快捷框内容
             data: {
                 condition: content,
@@ -99,7 +99,7 @@ Page({
         let page = this
         let openid = wx.getStorageSync("openid")
         request({
-            url: 'http://localhost:2020/mini/search/getRecent',
+            url: server+'/mini/search/getRecent',
             data: {
                 openid:openid
             }
@@ -113,7 +113,7 @@ Page({
     getHot() {
         let page = this
         request({
-            url: 'http://localhost:2020/mini/search/getHot',
+            url: server+'/mini/search/getHot',
         })
             .then(res=>{
                 page.setData({

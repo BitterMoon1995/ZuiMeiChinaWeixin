@@ -1,45 +1,54 @@
 swiper {
   width: 100%;
   height: calc(100vw*595/1594);
-}
-swiper image {
-  width: 100%;
+  image{
+    width: 100%;
+
+  }
 }
 .richText {
   width: 100%;
+  image{
+    width: 100%;
+  }
 }
-.richText image {
-  width: 100%;
-}
-.baseInfo {
+.baseInfo{
   padding-left: 10rpx;
   padding-right: 10rpx;
   margin-bottom: 5rpx;
+
   display: flex;
   justify-content: space-between;
+
+  view:nth-child(1) {
+    text{
+      color: red;
+      font-weight: bold;
+    }
+  }
 }
-.baseInfo view:nth-child(1) text {
-  color: red;
-  font-weight: bold;
-}
-.oneLine {
+.oneLine{
   height: 50rpx;
   margin-left: 10rpx;
+
   display: flex;
   align-items: center;
+
+  .navBtn{
+    margin-left: 25rpx;
+
+    width: 57rpx;
+    height: 57rpx;
+    image{
+      width: 100%;
+    }
+  }
 }
-.oneLine .navBtn {
-  margin-left: 25rpx;
-  width: 57rpx;
-  height: 57rpx;
-}
-.oneLine .navBtn image {
-  width: 100%;
-}
-.sliderCtn {
+.sliderCtn{
   background-color: red;
+
   position: fixed;
   right: 0;
   bottom: 200rpx;
 }
-/*# sourceMappingURL=GardenOfTheWorld.map */
+

@@ -1,6 +1,6 @@
 //index.js
 import {
-	request
+	request,server
 } from "../../request/index.js"
 let app = getApp()
 //获取应用实例
@@ -10,34 +10,29 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		//是否是未过期的会员。条件是isUser为true且isExpired未false
-		isVIP: false,
+		//是未注册的用户，或已过期、从未充值过的会员 吗？
+		invalidVIP: true,
 
 		sliderList: [],
-		catesList:[],
 		sceneList:[],
 		routeList:[],
-		activityList:[]
+		activityList:[],
+		recruitUrl: ''
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-		app.getVipInfo(this)
 
 		this.getSwiperList()
-		// this.getCatesList()
 		this.getSceneList()
-		// this.getRouteList()
-		// this.getActivityList()
-
-
+		this.vipRecruit()
 
 	},
 	getSwiperList() {
 		request({
-			url: "http://localhost:2020/mini/slider/list"
+			url: server+"/mini/slider/list"
 		})
 		.then(result => {
 			this.setData({
@@ -45,43 +40,13 @@ Page({
 			})
 		})
 	},
-	getCatesList() {
-		request({
-			url: "http://localhost:2020/mini/icon/getCategory"
-		})
-		.then(result => {
-			this.setData({
-				catesList: result
-			})
-		})
-	},
 	getSceneList() {
 		request({
-			url: "http://localhost:2020/mini/scene-image/getFloorList"
+			url: server+"/mini/scene-image/getFloorList"
 		})
 		.then(result => {
 			this.setData({
 				sceneList: result.data
-			})
-		})
-	},
-	getRouteList() {
-		request({
-			url: "http://localhost:8080/mini/route-image/list"
-		})
-		.then(result => {
-			this.setData({
-				routeList: result
-			})
-		})
-	},
-	getActivityList() {
-		request({
-			url: "http://localhost:8080/mini/activity-image/list"
-		})
-		.then(result => {
-			this.setData({
-				activityList: result
 			})
 		})
 	},
@@ -103,6 +68,27 @@ Page({
 
 	toSearch() {
 		wx.switchTab({url:'/pages/search/search'})
+	},
+
+	//动态设置会员招募海报的跳转路径
+	vipRecruit() {
+		let code = wx.getStorageSync('vipStatus')
+		console.log('code:'+code)
+		if (code==0){
+			this.setData({
+				recruitUrl : '/pages/vip/register/register'
+			})
+		}
+		if (code==1||code==2){
+			this.setData({
+				recruitUrl : '/pages/vip/charge/charge'
+			})
+		}
+		if (code==6){
+			this.setData({
+				invalidVIP : false
+			})
+		}
 	}
 })
 

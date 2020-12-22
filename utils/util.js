@@ -8,6 +8,12 @@ const formatTime = date => {
 
     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+//计算会员剩余天数
+const calDays = date => {
+    let now = new Date().getTime()
+    let days = (date.getTime()-now)/(1000 * 60 * 60 * 24)
+    return days.toFixed(0)
+}
 
 const formatNumber = n => {
     n = n.toString()
@@ -29,5 +35,6 @@ const randomStr = length => {
 
 module.exports = {
     formatTime: formatTime,
-    randomStr: randomStr
+    randomStr: randomStr,
+    calDays: calDays
 }

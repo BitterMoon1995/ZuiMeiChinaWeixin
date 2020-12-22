@@ -16,14 +16,9 @@
 		<navigator bind:tap="toSearch">感兴趣的景区、线路、旅游活动</navigator>
 	</view>
 
-	<!--	<view class="categories">-->
-<!--		<navigator wx:for="{{catesList.data}}" wx:key="src" url="{{item.url}}">-->
-<!--			<image mode="widthFix" src="{{item.src}}"></image>-->
-<!--		</navigator>-->
-<!--	</view>-->
-	<navigator class="banner" url="/pages/vip/vipcenter/vipcenter" wx:if="{{!isVIP}}">
+	<navigator class="banner" url="{{recruitUrl}}" wx:if="{{invalidVIP}}">
 		<image mode="widthFix"
-			   src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZjKABYxcAABPFnGxz8k094.jpg"></image>
+			   src="https://www.freetour.top//group1/M00/00/01/hOhf-V-GZjKABYxcAABPFnGxz8k094.jpg"></image>
 	</navigator>
 
 	<view>
@@ -40,37 +35,15 @@
 				</navigator>
 			</view>
 		</view>
-<!--		<view class="floor">-->
-<!--			<view class="floorText">-->
-<!--				<navigator>精品路线</navigator>-->
-<!--				<navigator>更多</navigator>-->
-<!--			</view>-->
-<!--			<view class="floorImgs">-->
-<!--				<navigator wx:for="{{routeList.data}}" wx:key="name">-->
-<!--					<image mode="widthFix" src="{{item.src}}"></image>-->
-<!--				</navigator>-->
-<!--			</view>-->
-<!--		</view>-->
-<!--		<view class="floor">-->
-<!--			<view class="floorText">-->
-<!--				<navigator>知名活动</navigator>-->
-<!--				<navigator>更多</navigator>-->
-<!--			</view>-->
-<!--			<view class="floorImgs">-->
-<!--				<navigator wx:for="{{activityList.data}}" wx:key="name">-->
-<!--					<image mode="widthFix" src="{{item.src}}"></image>-->
-<!--				</navigator>-->
-<!--			</view>-->
-<!--		</view>-->
 	</view>
 
 	<navigator class="banner" url="/pages/join/join">
 		<image mode="widthFix"
-			   src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZpmABK_hAAAtSKyZLKg768.jpg"></image>
+			   src="https://www.freetour.top//group1/M00/00/01/hOhf-V-GZpmABK_hAAAtSKyZLKg768.jpg"></image>
 	</navigator>
 
 	<view class="bottom">
-		<image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GZ1WAdYCKAABmCmaYjYQ512.png"
+		<image src="https://www.freetour.top//group1/M00/00/01/hOhf-V-GZ1WAdYCKAABmCmaYjYQ512.png"
 		mode="widthFix"></image>
 	</view>
 </view>

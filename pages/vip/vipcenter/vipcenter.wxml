@@ -2,7 +2,7 @@
 <view class="isVIP" wx:if="{{isUser}}">
     <view class="cardContainer">
         <view class="cardImg">
-            <image src="http://132.232.95.249//group1/M00/00/01/hOhf-V-GaAuASpUFAAJK9U8X-_M766.png" mode="widthFix">
+            <image src="https://www.freetour.top//group1/M00/00/01/hOhf-V-GaAuASpUFAAJK9U8X-_M766.png" mode="widthFix">
             </image>
         </view>
         <view class="expirationTime">{{expirationTime}}</view>
@@ -17,6 +17,7 @@
     <button>
         <navigator url="/pages/vip/charge/charge">充值</navigator>
     </button>
+    <text class="pmCode">推荐码：{{promoCode}}</text>
 </view>
 <view class="notRegister" wx:if="{{isNotUser}}">
     <view>您还未注册</view>

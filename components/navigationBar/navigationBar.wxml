@@ -3,11 +3,11 @@
     <view style="{{'height: ' + statusBarHeight}}" class="top"></view>
     <view class='capsule'>
         <view bindtap='back' class="back">
-            <image src='http://132.232.95.249//group1/M00/00/01/hOhf-V-GY3-AZX_VAAAOGCpRfuo168.png'
+            <image src='https://www.freetour.top//group1/M00/00/01/hOhf-V-GY3-AZX_VAAAOGCpRfuo168.png'
                    mode="widthFix"></image>
         </view>
         <view bindtap='backHome' class="home">
-            <image src='http://132.232.95.249//group1/M00/00/01/hOhf-V-GY7yAR7LiAAALmE1qD3M722.png'
+            <image src='https://www.freetour.top//group1/M00/00/01/hOhf-V-GY7yAR7LiAAALmE1qD3M722.png'
                    mode="widthFix"></image>
         </view>
     </view>
